@@ -8,12 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let server = DVPNServer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        server.start()
     }
-
-
 }
-

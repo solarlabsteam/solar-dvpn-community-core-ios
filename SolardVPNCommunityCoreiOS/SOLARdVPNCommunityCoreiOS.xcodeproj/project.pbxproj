@@ -14,6 +14,9 @@
 		92D6B40628E19E21004CF9DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92D6B40528E19E21004CF9DF /* Assets.xcassets */; };
 		92D6B40928E19E21004CF9DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D6B40728E19E21004CF9DF /* LaunchScreen.storyboard */; };
 		92D6B41228E1D765004CF9DF /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 92D6B41128E1D765004CF9DF /* Vapor */; };
+		92D6B41428E1E133004CF9DF /* DVPNServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B41328E1E133004CF9DF /* DVPNServer.swift */; };
+		92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */; };
+		92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B41D28E2F64D004CF9DF /* ClientConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		92D6B40528E19E21004CF9DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92D6B40828E19E21004CF9DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92D6B40A28E19E21004CF9DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92D6B41328E1E133004CF9DF /* DVPNServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVPNServer.swift; sourceTree = "<group>"; };
+		92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesRouteCollection.swift; sourceTree = "<group>"; };
+		92D6B41D28E2F64D004CF9DF /* ClientConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +64,11 @@
 		92D6B3FB28E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS */ = {
 			isa = PBXGroup;
 			children = (
+				92D6B41B28E2F62A004CF9DF /* Common */,
 				92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */,
 				92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */,
+				92D6B41328E1E133004CF9DF /* DVPNServer.swift */,
+				92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */,
 				92D6B40028E19E20004CF9DF /* ViewController.swift */,
 				92D6B40228E19E20004CF9DF /* Main.storyboard */,
 				92D6B40528E19E21004CF9DF /* Assets.xcassets */,
@@ -67,6 +76,22 @@
 				92D6B40A28E19E21004CF9DF /* Info.plist */,
 			);
 			path = SOLARdVPNCommunityCoreiOS;
+			sourceTree = "<group>";
+		};
+		92D6B41B28E2F62A004CF9DF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B41C28E2F63D004CF9DF /* Utilities */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		92D6B41C28E2F63D004CF9DF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B41D28E2F64D004CF9DF /* ClientConstants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,7 +172,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */,
+				92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */,
 				92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */,
+				92D6B41428E1E133004CF9DF /* DVPNServer.swift in Sources */,
+				92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */,
 				92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
