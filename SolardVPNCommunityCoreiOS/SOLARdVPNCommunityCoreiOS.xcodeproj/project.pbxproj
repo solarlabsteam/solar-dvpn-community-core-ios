@@ -27,6 +27,27 @@
 		22C3EEB728E4748E007DB01B /* TunnelConfiguration+WireGuardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA328E4733C007DB01B /* TunnelConfiguration+WireGuardConfig.swift */; };
 		22C3EEB828E4748E007DB01B /* ConfigurationParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA528E4733C007DB01B /* ConfigurationParseError.swift */; };
 		22C3EEBA28E4830F007DB01B /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EEB928E4830F007DB01B /* SwiftyBeaver */; };
+		22C3EECA28E48B52007DB01B /* TunnelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEBD28E48B51007DB01B /* TunnelManager.swift */; };
+		22C3EECB28E48B52007DB01B /* TunnelManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEBE28E48B51007DB01B /* TunnelManagerType.swift */; };
+		22C3EECC28E48B52007DB01B /* TunnelChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEC028E48B51007DB01B /* TunnelChanges.swift */; };
+		22C3EECD28E48B52007DB01B /* TunnelInterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEC128E48B51007DB01B /* TunnelInterfaceModel.swift */; };
+		22C3EECE28E48B52007DB01B /* PeersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEC228E48B51007DB01B /* PeersModel.swift */; };
+		22C3EECF28E48B52007DB01B /* TunnelSavingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEC328E48B51007DB01B /* TunnelSavingError.swift */; };
+		22C3EED028E48B52007DB01B /* TunnelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEC428E48B51007DB01B /* TunnelModel.swift */; };
+		22C3EED128E48B52007DB01B /* TunnelStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEC628E48B51007DB01B /* TunnelStatus.swift */; };
+		22C3EED228E48B52007DB01B /* TunnelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEC728E48B51007DB01B /* TunnelContainer.swift */; };
+		22C3EED328E48B52007DB01B /* TunnelsServiceStatusDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEC828E48B51007DB01B /* TunnelsServiceStatusDelegate.swift */; };
+		22C3EED428E48B52007DB01B /* TunnelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEC928E48B51007DB01B /* TunnelsService.swift */; };
+		22C3EEE428E48D9A007DB01B /* NETunnelProviderManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EED728E48D9A007DB01B /* NETunnelProviderManager+Ext.swift */; };
+		22C3EEE528E48D9A007DB01B /* NEVPNManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EED828E48D9A007DB01B /* NEVPNManager+Ext.swift */; };
+		22C3EEE628E48D9A007DB01B /* TunnelConfiguration+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EED928E48D9A007DB01B /* TunnelConfiguration+Ext.swift */; };
+		22C3EEE728E48D9A007DB01B /* NEVPNStatus+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEDA28E48D9A007DB01B /* NEVPNStatus+Ext.swift */; };
+		22C3EEE828E48D9A007DB01B /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEDC28E48D9A007DB01B /* Serializer.swift */; };
+		22C3EEED28E48D9A007DB01B /* SentinelNode+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEE228E48D9A007DB01B /* SentinelNode+Ext.swift */; };
+		22C3EEF128E48E2F007DB01B /* SentinelWallet in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EEF028E48E2F007DB01B /* SentinelWallet */; };
+		22C3EEF628E48EBF007DB01B /* StoresDNSServers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEF328E48EBE007DB01B /* StoresDNSServers.swift */; };
+		22C3EEF928E48F0B007DB01B /* DNSServerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEF828E48F0A007DB01B /* DNSServerType.swift */; };
+		22C3EEFB28E48F95007DB01B /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEFA28E48F94007DB01B /* NotificationToken.swift */; };
 		92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */; };
 		92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */; };
 		92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B40028E19E20004CF9DF /* ViewController.swift */; };
@@ -84,6 +105,26 @@
 		22C3EEA328E4733C007DB01B /* TunnelConfiguration+WireGuardConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TunnelConfiguration+WireGuardConfig.swift"; sourceTree = "<group>"; };
 		22C3EEA428E4733C007DB01B /* String+ArrayConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ArrayConversion.swift"; sourceTree = "<group>"; };
 		22C3EEA528E4733C007DB01B /* ConfigurationParseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationParseError.swift; sourceTree = "<group>"; };
+		22C3EEBD28E48B51007DB01B /* TunnelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelManager.swift; sourceTree = "<group>"; };
+		22C3EEBE28E48B51007DB01B /* TunnelManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelManagerType.swift; sourceTree = "<group>"; };
+		22C3EEC028E48B51007DB01B /* TunnelChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelChanges.swift; sourceTree = "<group>"; };
+		22C3EEC128E48B51007DB01B /* TunnelInterfaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelInterfaceModel.swift; sourceTree = "<group>"; };
+		22C3EEC228E48B51007DB01B /* PeersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeersModel.swift; sourceTree = "<group>"; };
+		22C3EEC328E48B51007DB01B /* TunnelSavingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelSavingError.swift; sourceTree = "<group>"; };
+		22C3EEC428E48B51007DB01B /* TunnelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelModel.swift; sourceTree = "<group>"; };
+		22C3EEC628E48B51007DB01B /* TunnelStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelStatus.swift; sourceTree = "<group>"; };
+		22C3EEC728E48B51007DB01B /* TunnelContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelContainer.swift; sourceTree = "<group>"; };
+		22C3EEC828E48B51007DB01B /* TunnelsServiceStatusDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelsServiceStatusDelegate.swift; sourceTree = "<group>"; };
+		22C3EEC928E48B51007DB01B /* TunnelsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelsService.swift; sourceTree = "<group>"; };
+		22C3EED728E48D9A007DB01B /* NETunnelProviderManager+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NETunnelProviderManager+Ext.swift"; sourceTree = "<group>"; };
+		22C3EED828E48D9A007DB01B /* NEVPNManager+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NEVPNManager+Ext.swift"; sourceTree = "<group>"; };
+		22C3EED928E48D9A007DB01B /* TunnelConfiguration+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TunnelConfiguration+Ext.swift"; sourceTree = "<group>"; };
+		22C3EEDA28E48D9A007DB01B /* NEVPNStatus+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NEVPNStatus+Ext.swift"; sourceTree = "<group>"; };
+		22C3EEDC28E48D9A007DB01B /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
+		22C3EEE228E48D9A007DB01B /* SentinelNode+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SentinelNode+Ext.swift"; sourceTree = "<group>"; };
+		22C3EEF328E48EBE007DB01B /* StoresDNSServers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresDNSServers.swift; sourceTree = "<group>"; };
+		22C3EEF828E48F0A007DB01B /* DNSServerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNSServerType.swift; sourceTree = "<group>"; };
+		22C3EEFA28E48F94007DB01B /* NotificationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationToken.swift; sourceTree = "<group>"; };
 		92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOLARdVPNCommunityCoreiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +156,7 @@
 				92D6B44D28E438EF004CF9DF /* Alamofire in Frameworks */,
 				22C3EE9A28E464A1007DB01B /* Alamofire in Frameworks */,
 				22C3EEB128E473E5007DB01B /* SwiftyBeaver in Frameworks */,
+				22C3EEF128E48E2F007DB01B /* SentinelWallet in Frameworks */,
 				92D6B41228E1D765004CF9DF /* Vapor in Frameworks */,
 				22C3EE6A28E460B2007DB01B /* WireGuardKit in Frameworks */,
 			);
@@ -162,6 +204,94 @@
 			path = Extentions;
 			sourceTree = "<group>";
 		};
+		22C3EEBB28E48B51007DB01B /* Tunnel */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEBC28E48B51007DB01B /* Manager */,
+				22C3EEBF28E48B51007DB01B /* Model */,
+				22C3EEC528E48B51007DB01B /* Service */,
+			);
+			path = Tunnel;
+			sourceTree = "<group>";
+		};
+		22C3EEBC28E48B51007DB01B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEBD28E48B51007DB01B /* TunnelManager.swift */,
+				22C3EEBE28E48B51007DB01B /* TunnelManagerType.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		22C3EEBF28E48B51007DB01B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEC028E48B51007DB01B /* TunnelChanges.swift */,
+				22C3EEC128E48B51007DB01B /* TunnelInterfaceModel.swift */,
+				22C3EEC228E48B51007DB01B /* PeersModel.swift */,
+				22C3EEC328E48B51007DB01B /* TunnelSavingError.swift */,
+				22C3EEC428E48B51007DB01B /* TunnelModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		22C3EEC528E48B51007DB01B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEC628E48B51007DB01B /* TunnelStatus.swift */,
+				22C3EEC728E48B51007DB01B /* TunnelContainer.swift */,
+				22C3EEC828E48B51007DB01B /* TunnelsServiceStatusDelegate.swift */,
+				22C3EEC928E48B51007DB01B /* TunnelsService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		22C3EED528E48D9A007DB01B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEDB28E48D9A007DB01B /* Foundation */,
+				22C3EED628E48D9A007DB01B /* VPN */,
+				22C3EEE028E48D9A007DB01B /* Wallet */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		22C3EED628E48D9A007DB01B /* VPN */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EED728E48D9A007DB01B /* NETunnelProviderManager+Ext.swift */,
+				22C3EED828E48D9A007DB01B /* NEVPNManager+Ext.swift */,
+				22C3EEDA28E48D9A007DB01B /* NEVPNStatus+Ext.swift */,
+				22C3EED928E48D9A007DB01B /* TunnelConfiguration+Ext.swift */,
+			);
+			path = VPN;
+			sourceTree = "<group>";
+		};
+		22C3EEDB28E48D9A007DB01B /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEDC28E48D9A007DB01B /* Serializer.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		22C3EEE028E48D9A007DB01B /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEE228E48D9A007DB01B /* SentinelNode+Ext.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		22C3EEF228E48EBE007DB01B /* DNSServers */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEF828E48F0A007DB01B /* DNSServerType.swift */,
+				22C3EEF328E48EBE007DB01B /* StoresDNSServers.swift */,
+			);
+			path = DNSServers;
+			sourceTree = "<group>";
+		};
 		92D6B3F028E19E20004CF9DF = {
 			isa = PBXGroup;
 			children = (
@@ -185,17 +315,19 @@
 		92D6B3FB28E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS */ = {
 			isa = PBXGroup;
 			children = (
-				22C3EE9B28E467E4007DB01B /* SOLARdVPNCommunityCoreiOS.entitlements */,
-				92D6B41B28E2F62A004CF9DF /* Common */,
 				92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */,
-				92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */,
-				92D6B41328E1E133004CF9DF /* DVPNServer.swift */,
-				92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */,
-				92D6B40028E19E20004CF9DF /* ViewController.swift */,
-				92D6B40228E19E20004CF9DF /* Main.storyboard */,
 				92D6B40528E19E21004CF9DF /* Assets.xcassets */,
-				92D6B40728E19E21004CF9DF /* LaunchScreen.storyboard */,
+				92D6B41B28E2F62A004CF9DF /* Common */,
+				22C3EEF228E48EBE007DB01B /* DNSServers */,
+				22C3EEBB28E48B51007DB01B /* Tunnel */,
+				92D6B41328E1E133004CF9DF /* DVPNServer.swift */,
 				92D6B40A28E19E21004CF9DF /* Info.plist */,
+				92D6B40728E19E21004CF9DF /* LaunchScreen.storyboard */,
+				92D6B40228E19E20004CF9DF /* Main.storyboard */,
+				92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */,
+				92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */,
+				22C3EE9B28E467E4007DB01B /* SOLARdVPNCommunityCoreiOS.entitlements */,
+				92D6B40028E19E20004CF9DF /* ViewController.swift */,
 			);
 			path = SOLARdVPNCommunityCoreiOS;
 			sourceTree = "<group>";
@@ -203,6 +335,7 @@
 		92D6B41B28E2F62A004CF9DF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				22C3EED528E48D9A007DB01B /* Extensions */,
 				92D6B41C28E2F63D004CF9DF /* Utilities */,
 			);
 			path = Common;
@@ -211,6 +344,7 @@
 		92D6B41C28E2F63D004CF9DF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				22C3EEFA28E48F94007DB01B /* NotificationToken.swift */,
 				92D6B41D28E2F64D004CF9DF /* ClientConstants.swift */,
 			);
 			path = Utilities;
@@ -279,6 +413,7 @@
 				22C3EE6928E460B2007DB01B /* WireGuardKit */,
 				22C3EE9928E464A1007DB01B /* Alamofire */,
 				22C3EEB028E473E5007DB01B /* SwiftyBeaver */,
+				22C3EEF028E48E2F007DB01B /* SentinelWallet */,
 			);
 			productName = SolardVPNCommunityCoreiOS;
 			productReference = 92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */;
@@ -319,6 +454,7 @@
 				22C3EE6828E460B2007DB01B /* XCRemoteSwiftPackageReference "wireguard-apple" */,
 				22C3EE9828E464A1007DB01B /* XCRemoteSwiftPackageReference "Alamofire" */,
 				22C3EEAF28E473E5007DB01B /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
+				22C3EEEF28E48E2F007DB01B /* XCRemoteSwiftPackageReference "sentinel-wallet-sdk-ios" */,
 			);
 			productRefGroup = 92D6B3FA28E19E20004CF9DF /* Products */;
 			projectDirPath = "";
@@ -371,17 +507,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */,
+				22C3EEED28E48D9A007DB01B /* SentinelNode+Ext.swift in Sources */,
 				92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */,
 				22C3EEAC28E4733C007DB01B /* String+ArrayConversion.swift in Sources */,
 				92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */,
 				22C3EEA728E4733C007DB01B /* Config.swift in Sources */,
+				22C3EEE528E48D9A007DB01B /* NEVPNManager+Ext.swift in Sources */,
+				22C3EECA28E48B52007DB01B /* TunnelManager.swift in Sources */,
+				22C3EED028E48B52007DB01B /* TunnelModel.swift in Sources */,
+				22C3EECC28E48B52007DB01B /* TunnelChanges.swift in Sources */,
 				22C3EEAB28E4733C007DB01B /* TunnelConfiguration+WireGuardConfig.swift in Sources */,
+				22C3EECB28E48B52007DB01B /* TunnelManagerType.swift in Sources */,
+				22C3EEF928E48F0B007DB01B /* DNSServerType.swift in Sources */,
 				22C3EEAD28E4733C007DB01B /* ConfigurationParseError.swift in Sources */,
+				22C3EED228E48B52007DB01B /* TunnelContainer.swift in Sources */,
+				22C3EEFB28E48F95007DB01B /* NotificationToken.swift in Sources */,
+				22C3EED428E48B52007DB01B /* TunnelsService.swift in Sources */,
+				22C3EEE628E48D9A007DB01B /* TunnelConfiguration+Ext.swift in Sources */,
+				22C3EEE828E48D9A007DB01B /* Serializer.swift in Sources */,
+				22C3EEE728E48D9A007DB01B /* NEVPNStatus+Ext.swift in Sources */,
 				92D6B41428E1E133004CF9DF /* DVPNServer.swift in Sources */,
 				22C3EEA828E4733C007DB01B /* Keychain.swift in Sources */,
+				22C3EECE28E48B52007DB01B /* PeersModel.swift in Sources */,
 				92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */,
+				22C3EECD28E48B52007DB01B /* TunnelInterfaceModel.swift in Sources */,
+				22C3EEF628E48EBF007DB01B /* StoresDNSServers.swift in Sources */,
 				92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */,
+				22C3EED328E48B52007DB01B /* TunnelsServiceStatusDelegate.swift in Sources */,
+				22C3EECF28E48B52007DB01B /* TunnelSavingError.swift in Sources */,
+				22C3EEE428E48D9A007DB01B /* NETunnelProviderManager+Ext.swift in Sources */,
 				22C3EEAA28E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift in Sources */,
+				22C3EED128E48B52007DB01B /* TunnelStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +899,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		22C3EEEF28E48E2F007DB01B /* XCRemoteSwiftPackageReference "sentinel-wallet-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/solarlabsteam/sentinel-wallet-sdk-ios";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		92D6B41028E1D765004CF9DF /* XCRemoteSwiftPackageReference "vapor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vapor/vapor.git";
@@ -786,6 +950,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 22C3EEAF28E473E5007DB01B /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
 			productName = SwiftyBeaver;
+		};
+		22C3EEF028E48E2F007DB01B /* SentinelWallet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22C3EEEF28E48E2F007DB01B /* XCRemoteSwiftPackageReference "sentinel-wallet-sdk-ios" */;
+			productName = SentinelWallet;
 		};
 		92D6B41128E1D765004CF9DF /* Vapor */ = {
 			isa = XCSwiftPackageProductDependency;
