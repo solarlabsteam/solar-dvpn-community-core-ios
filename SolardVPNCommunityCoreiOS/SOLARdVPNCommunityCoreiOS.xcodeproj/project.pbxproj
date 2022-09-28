@@ -17,6 +17,7 @@
 		92D6B41428E1E133004CF9DF /* DVPNServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B41328E1E133004CF9DF /* DVPNServer.swift */; };
 		92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */; };
 		92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B41D28E2F64D004CF9DF /* ClientConstants.swift */; };
+		92D6B44D28E438EF004CF9DF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92D6B44C28E438EF004CF9DF /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92D6B44D28E438EF004CF9DF /* Alamofire in Frameworks */,
 				92D6B41228E1D765004CF9DF /* Vapor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +114,7 @@
 			name = SOLARdVPNCommunityCoreiOS;
 			packageProductDependencies = (
 				92D6B41128E1D765004CF9DF /* Vapor */,
+				92D6B44C28E438EF004CF9DF /* Alamofire */,
 			);
 			productName = SolardVPNCommunityCoreiOS;
 			productReference = 92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */;
@@ -404,6 +407,14 @@
 				minimumVersion = 4.65.2;
 			};
 		};
+		92D6B44B28E438EF004CF9DF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -411,6 +422,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 92D6B41028E1D765004CF9DF /* XCRemoteSwiftPackageReference "vapor" */;
 			productName = Vapor;
+		};
+		92D6B44C28E438EF004CF9DF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92D6B44B28E438EF004CF9DF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
