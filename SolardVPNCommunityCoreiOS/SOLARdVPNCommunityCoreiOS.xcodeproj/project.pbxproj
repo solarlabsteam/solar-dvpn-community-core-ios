@@ -13,6 +13,20 @@
 		22C3EE9028E4638E007DB01B /* WireGuardNetworkExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22C3EE9728E463D6007DB01B /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9628E463D6007DB01B /* WireGuardKit */; };
 		22C3EE9A28E464A1007DB01B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9928E464A1007DB01B /* Alamofire */; };
+		22C3EEA728E4733C007DB01B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EE9D28E4733C007DB01B /* Config.swift */; };
+		22C3EEA828E4733C007DB01B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EE9E28E4733C007DB01B /* Keychain.swift */; };
+		22C3EEAA28E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA228E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift */; };
+		22C3EEAB28E4733C007DB01B /* TunnelConfiguration+WireGuardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA328E4733C007DB01B /* TunnelConfiguration+WireGuardConfig.swift */; };
+		22C3EEAC28E4733C007DB01B /* String+ArrayConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA428E4733C007DB01B /* String+ArrayConversion.swift */; };
+		22C3EEAD28E4733C007DB01B /* ConfigurationParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA528E4733C007DB01B /* ConfigurationParseError.swift */; };
+		22C3EEB128E473E5007DB01B /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EEB028E473E5007DB01B /* SwiftyBeaver */; };
+		22C3EEB228E4748E007DB01B /* String+ArrayConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA428E4733C007DB01B /* String+ArrayConversion.swift */; };
+		22C3EEB328E4748E007DB01B /* NETunnelProviderProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA228E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift */; };
+		22C3EEB428E4748E007DB01B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EE9D28E4733C007DB01B /* Config.swift */; };
+		22C3EEB528E4748E007DB01B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EE9E28E4733C007DB01B /* Keychain.swift */; };
+		22C3EEB728E4748E007DB01B /* TunnelConfiguration+WireGuardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA328E4733C007DB01B /* TunnelConfiguration+WireGuardConfig.swift */; };
+		22C3EEB828E4748E007DB01B /* ConfigurationParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA528E4733C007DB01B /* ConfigurationParseError.swift */; };
+		22C3EEBA28E4830F007DB01B /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EEB928E4830F007DB01B /* SwiftyBeaver */; };
 		92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */; };
 		92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */; };
 		92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B40028E19E20004CF9DF /* ViewController.swift */; };
@@ -64,6 +78,12 @@
 		22C3EE8C28E4638E007DB01B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22C3EE8D28E4638E007DB01B /* WireGuardNetworkExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WireGuardNetworkExtension.entitlements; sourceTree = "<group>"; };
 		22C3EE9B28E467E4007DB01B /* SOLARdVPNCommunityCoreiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SOLARdVPNCommunityCoreiOS.entitlements; sourceTree = "<group>"; };
+		22C3EE9D28E4733C007DB01B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		22C3EE9E28E4733C007DB01B /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		22C3EEA228E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NETunnelProviderProtocol+Extension.swift"; sourceTree = "<group>"; };
+		22C3EEA328E4733C007DB01B /* TunnelConfiguration+WireGuardConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TunnelConfiguration+WireGuardConfig.swift"; sourceTree = "<group>"; };
+		22C3EEA428E4733C007DB01B /* String+ArrayConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ArrayConversion.swift"; sourceTree = "<group>"; };
+		22C3EEA528E4733C007DB01B /* ConfigurationParseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationParseError.swift; sourceTree = "<group>"; };
 		92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOLARdVPNCommunityCoreiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +104,7 @@
 			files = (
 				22C3EE9728E463D6007DB01B /* WireGuardKit in Frameworks */,
 				22C3EE8828E4638E007DB01B /* NetworkExtension.framework in Frameworks */,
+				22C3EEBA28E4830F007DB01B /* SwiftyBeaver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +114,7 @@
 			files = (
 				92D6B44D28E438EF004CF9DF /* Alamofire in Frameworks */,
 				22C3EE9A28E464A1007DB01B /* Alamofire in Frameworks */,
+				22C3EEB128E473E5007DB01B /* SwiftyBeaver in Frameworks */,
 				92D6B41228E1D765004CF9DF /* Vapor in Frameworks */,
 				22C3EE6A28E460B2007DB01B /* WireGuardKit in Frameworks */,
 			);
@@ -119,9 +141,31 @@
 			path = WireGuardNetworkExtension;
 			sourceTree = "<group>";
 		};
+		22C3EE9C28E4733C007DB01B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEA128E4733C007DB01B /* Extentions */,
+				22C3EE9D28E4733C007DB01B /* Config.swift */,
+				22C3EE9E28E4733C007DB01B /* Keychain.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		22C3EEA128E4733C007DB01B /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				22C3EEA228E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift */,
+				22C3EEA328E4733C007DB01B /* TunnelConfiguration+WireGuardConfig.swift */,
+				22C3EEA428E4733C007DB01B /* String+ArrayConversion.swift */,
+				22C3EEA528E4733C007DB01B /* ConfigurationParseError.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		92D6B3F028E19E20004CF9DF = {
 			isa = PBXGroup;
 			children = (
+				22C3EE9C28E4733C007DB01B /* Shared */,
 				92D6B3FB28E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS */,
 				22C3EE8928E4638E007DB01B /* WireGuardNetworkExtension */,
 				22C3EE7428E46374007DB01B /* Frameworks */,
@@ -208,6 +252,7 @@
 			name = WireGuardNetworkExtension;
 			packageProductDependencies = (
 				22C3EE9628E463D6007DB01B /* WireGuardKit */,
+				22C3EEB928E4830F007DB01B /* SwiftyBeaver */,
 			);
 			productName = WireGuardNetworkExtension;
 			productReference = 22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */;
@@ -233,6 +278,7 @@
 				92D6B44C28E438EF004CF9DF /* Alamofire */,
 				22C3EE6928E460B2007DB01B /* WireGuardKit */,
 				22C3EE9928E464A1007DB01B /* Alamofire */,
+				22C3EEB028E473E5007DB01B /* SwiftyBeaver */,
 			);
 			productName = SolardVPNCommunityCoreiOS;
 			productReference = 92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */;
@@ -272,6 +318,7 @@
 				92D6B41028E1D765004CF9DF /* XCRemoteSwiftPackageReference "vapor" */,
 				22C3EE6828E460B2007DB01B /* XCRemoteSwiftPackageReference "wireguard-apple" */,
 				22C3EE9828E464A1007DB01B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				22C3EEAF28E473E5007DB01B /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 			);
 			productRefGroup = 92D6B3FA28E19E20004CF9DF /* Products */;
 			projectDirPath = "";
@@ -309,7 +356,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C3EEB228E4748E007DB01B /* String+ArrayConversion.swift in Sources */,
+				22C3EEB428E4748E007DB01B /* Config.swift in Sources */,
 				22C3EE8B28E4638E007DB01B /* PacketTunnelProvider.swift in Sources */,
+				22C3EEB328E4748E007DB01B /* NETunnelProviderProtocol+Extension.swift in Sources */,
+				22C3EEB528E4748E007DB01B /* Keychain.swift in Sources */,
+				22C3EEB828E4748E007DB01B /* ConfigurationParseError.swift in Sources */,
+				22C3EEB728E4748E007DB01B /* TunnelConfiguration+WireGuardConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,10 +372,16 @@
 			files = (
 				92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */,
 				92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */,
+				22C3EEAC28E4733C007DB01B /* String+ArrayConversion.swift in Sources */,
 				92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */,
+				22C3EEA728E4733C007DB01B /* Config.swift in Sources */,
+				22C3EEAB28E4733C007DB01B /* TunnelConfiguration+WireGuardConfig.swift in Sources */,
+				22C3EEAD28E4733C007DB01B /* ConfigurationParseError.swift in Sources */,
 				92D6B41428E1E133004CF9DF /* DVPNServer.swift in Sources */,
+				22C3EEA828E4733C007DB01B /* Keychain.swift in Sources */,
 				92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */,
 				92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */,
+				22C3EEAA28E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,6 +735,14 @@
 				kind = branch;
 			};
 		};
+		22C3EEAF28E473E5007DB01B /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		92D6B41028E1D765004CF9DF /* XCRemoteSwiftPackageReference "vapor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vapor/vapor.git";
@@ -709,6 +776,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 22C3EE9828E464A1007DB01B /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		22C3EEB028E473E5007DB01B /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22C3EEAF28E473E5007DB01B /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
+		22C3EEB928E4830F007DB01B /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22C3EEAF28E473E5007DB01B /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
 		};
 		92D6B41128E1D765004CF9DF /* Vapor */ = {
 			isa = XCSwiftPackageProductDependency;
