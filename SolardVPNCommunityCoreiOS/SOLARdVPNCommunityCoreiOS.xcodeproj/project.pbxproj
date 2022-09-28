@@ -17,8 +17,43 @@
 		92D6B41428E1E133004CF9DF /* DVPNServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B41328E1E133004CF9DF /* DVPNServer.swift */; };
 		92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */; };
 		92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B41D28E2F64D004CF9DF /* ClientConstants.swift */; };
+		92D6B42828E32900004CF9DF /* SOLARAPI.docc in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B42728E32900004CF9DF /* SOLARAPI.docc */; };
+		92D6B43628E32900004CF9DF /* SOLARAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D6B42628E32900004CF9DF /* SOLARAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		92D6B43928E32900004CF9DF /* SOLARAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D6B42428E32900004CF9DF /* SOLARAPI.framework */; };
+		92D6B43A28E32900004CF9DF /* SOLARAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92D6B42428E32900004CF9DF /* SOLARAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92D6B44428E34A9B004CF9DF /* AnyEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B44328E34A9B004CF9DF /* AnyEncodable.swift */; };
+		92D6B44628E34D7C004CF9DF /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B44528E34D7C004CF9DF /* APIRequest.swift */; };
 		92D6B44D28E438EF004CF9DF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92D6B44C28E438EF004CF9DF /* Alamofire */; };
+		92D6B45628E4609E004CF9DF /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45528E4609E004CF9DF /* APITarget.swift */; };
+		92D6B45828E46118004CF9DF /* SOLARAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45728E46118004CF9DF /* SOLARAPIProvider.swift */; };
+		92D6B45A28E46283004CF9DF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45928E46283004CF9DF /* NetworkError.swift */; };
+		92D6B46928E47471004CF9DF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92D6B46828E47471004CF9DF /* Alamofire */; };
+		92D6B46C28E47519004CF9DF /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B46B28E47519004CF9DF /* Encodable+Ext.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		92D6B43728E32900004CF9DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D6B3F128E19E20004CF9DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92D6B42328E32900004CF9DF;
+			remoteInfo = SOLARAPI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		92D6B43E28E32900004CF9DF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				92D6B43A28E32900004CF9DF /* SOLARAPI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOLARdVPNCommunityCoreiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +67,15 @@
 		92D6B41328E1E133004CF9DF /* DVPNServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVPNServer.swift; sourceTree = "<group>"; };
 		92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesRouteCollection.swift; sourceTree = "<group>"; };
 		92D6B41D28E2F64D004CF9DF /* ClientConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientConstants.swift; sourceTree = "<group>"; };
+		92D6B42428E32900004CF9DF /* SOLARAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOLARAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92D6B42628E32900004CF9DF /* SOLARAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOLARAPI.h; sourceTree = "<group>"; };
+		92D6B42728E32900004CF9DF /* SOLARAPI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SOLARAPI.docc; sourceTree = "<group>"; };
+		92D6B44328E34A9B004CF9DF /* AnyEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEncodable.swift; sourceTree = "<group>"; };
+		92D6B44528E34D7C004CF9DF /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		92D6B45528E4609E004CF9DF /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
+		92D6B45728E46118004CF9DF /* SOLARAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOLARAPIProvider.swift; sourceTree = "<group>"; };
+		92D6B45928E46283004CF9DF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		92D6B46B28E47519004CF9DF /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +85,15 @@
 			files = (
 				92D6B44D28E438EF004CF9DF /* Alamofire in Frameworks */,
 				92D6B41228E1D765004CF9DF /* Vapor in Frameworks */,
+				92D6B43928E32900004CF9DF /* SOLARAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D6B42128E32900004CF9DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D6B46928E47471004CF9DF /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				92D6B3FB28E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS */,
+				92D6B42528E32900004CF9DF /* SOLARAPI */,
 				92D6B3FA28E19E20004CF9DF /* Products */,
+				92D6B46728E47471004CF9DF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */,
+				92D6B42428E32900004CF9DF /* SOLARAPI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,16 +122,17 @@
 		92D6B3FB28E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS */ = {
 			isa = PBXGroup;
 			children = (
-				92D6B41B28E2F62A004CF9DF /* Common */,
 				92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */,
-				92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */,
-				92D6B41328E1E133004CF9DF /* DVPNServer.swift */,
-				92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */,
-				92D6B40028E19E20004CF9DF /* ViewController.swift */,
-				92D6B40228E19E20004CF9DF /* Main.storyboard */,
 				92D6B40528E19E21004CF9DF /* Assets.xcassets */,
-				92D6B40728E19E21004CF9DF /* LaunchScreen.storyboard */,
+				92D6B41B28E2F62A004CF9DF /* Common */,
+				92D6B46D28E47DD2004CF9DF /* Services */,
+				92D6B41328E1E133004CF9DF /* DVPNServer.swift */,
 				92D6B40A28E19E21004CF9DF /* Info.plist */,
+				92D6B40728E19E21004CF9DF /* LaunchScreen.storyboard */,
+				92D6B40228E19E20004CF9DF /* Main.storyboard */,
+				92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */,
+				92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */,
+				92D6B40028E19E20004CF9DF /* ViewController.swift */,
 			);
 			path = SOLARdVPNCommunityCoreiOS;
 			sourceTree = "<group>";
@@ -96,6 +153,54 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		92D6B42528E32900004CF9DF /* SOLARAPI */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B44228E34A4E004CF9DF /* APISupport */,
+				92D6B46428E47304004CF9DF /* Models */,
+				92D6B44A28E4360D004CF9DF /* Providers */,
+				92D6B42728E32900004CF9DF /* SOLARAPI.docc */,
+				92D6B42628E32900004CF9DF /* SOLARAPI.h */,
+				92D6B46A28E474C3004CF9DF /* Tools */,
+			);
+			path = SOLARAPI;
+			sourceTree = "<group>";
+		};
+		92D6B44228E34A4E004CF9DF /* APISupport */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B44328E34A9B004CF9DF /* AnyEncodable.swift */,
+				92D6B44528E34D7C004CF9DF /* APIRequest.swift */,
+				92D6B45528E4609E004CF9DF /* APITarget.swift */,
+				92D6B45928E46283004CF9DF /* NetworkError.swift */,
+				92D6B45728E46118004CF9DF /* SOLARAPIProvider.swift */,
+			);
+			path = APISupport;
+			sourceTree = "<group>";
+		};
+		92D6B46428E47304004CF9DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B46528E47311004CF9DF /* PageResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		92D6B46728E47471004CF9DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		92D6B46A28E474C3004CF9DF /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B46B28E47519004CF9DF /* Encodable+Ext.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,10 +211,12 @@
 				92D6B3F528E19E20004CF9DF /* Sources */,
 				92D6B3F628E19E20004CF9DF /* Frameworks */,
 				92D6B3F728E19E20004CF9DF /* Resources */,
+				92D6B43E28E32900004CF9DF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				92D6B43828E32900004CF9DF /* PBXTargetDependency */,
 			);
 			name = SOLARdVPNCommunityCoreiOS;
 			packageProductDependencies = (
@@ -119,6 +226,27 @@
 			productName = SolardVPNCommunityCoreiOS;
 			productReference = 92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		92D6B42328E32900004CF9DF /* SOLARAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92D6B43B28E32900004CF9DF /* Build configuration list for PBXNativeTarget "SOLARAPI" */;
+			buildPhases = (
+				92D6B41F28E32900004CF9DF /* Headers */,
+				92D6B42028E32900004CF9DF /* Sources */,
+				92D6B42128E32900004CF9DF /* Frameworks */,
+				92D6B42228E32900004CF9DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SOLARAPI;
+			packageProductDependencies = (
+				92D6B46828E47471004CF9DF /* Alamofire */,
+			);
+			productName = SOLARAPI;
+			productReference = 92D6B42428E32900004CF9DF /* SOLARAPI.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -131,6 +259,9 @@
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					92D6B3F828E19E20004CF9DF = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					92D6B42328E32900004CF9DF = {
 						CreatedOnToolsVersion = 14.0;
 					};
 				};
@@ -146,12 +277,14 @@
 			mainGroup = 92D6B3F028E19E20004CF9DF;
 			packageReferences = (
 				92D6B41028E1D765004CF9DF /* XCRemoteSwiftPackageReference "vapor" */,
+				92D6B44B28E438EF004CF9DF /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 92D6B3FA28E19E20004CF9DF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				92D6B3F828E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS */,
+				92D6B42328E32900004CF9DF /* SOLARAPI */,
 			);
 		};
 /* End PBXProject section */
@@ -164,6 +297,13 @@
 				92D6B40928E19E21004CF9DF /* LaunchScreen.storyboard in Resources */,
 				92D6B40628E19E21004CF9DF /* Assets.xcassets in Resources */,
 				92D6B40428E19E20004CF9DF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D6B42228E32900004CF9DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +323,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		92D6B42028E32900004CF9DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D6B44428E34A9B004CF9DF /* AnyEncodable.swift in Sources */,
+				92D6B44628E34D7C004CF9DF /* APIRequest.swift in Sources */,
+				92D6B42828E32900004CF9DF /* SOLARAPI.docc in Sources */,
+				92D6B45A28E46283004CF9DF /* NetworkError.swift in Sources */,
+				92D6B46C28E47519004CF9DF /* Encodable+Ext.swift in Sources */,
+				92D6B45628E4609E004CF9DF /* APITarget.swift in Sources */,
+				92D6B45828E46118004CF9DF /* SOLARAPIProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		92D6B43828E32900004CF9DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92D6B42328E32900004CF9DF /* SOLARAPI */;
+			targetProxy = 92D6B43728E32900004CF9DF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		92D6B40228E19E20004CF9DF /* Main.storyboard */ = {
@@ -322,6 +484,7 @@
 		92D6B40E28E19E21004CF9DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -350,6 +513,7 @@
 		92D6B40F28E19E21004CF9DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -375,6 +539,68 @@
 			};
 			name = Release;
 		};
+		92D6B43C28E32900004CF9DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FVU6756987;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ee.solarlabs.community-core.ios.SOLARAPI";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		92D6B43D28E32900004CF9DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FVU6756987;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ee.solarlabs.community-core.ios.SOLARAPI";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -392,6 +618,15 @@
 			buildConfigurations = (
 				92D6B40E28E19E21004CF9DF /* Debug */,
 				92D6B40F28E19E21004CF9DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92D6B43B28E32900004CF9DF /* Build configuration list for PBXNativeTarget "SOLARAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92D6B43C28E32900004CF9DF /* Debug */,
+				92D6B43D28E32900004CF9DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -424,6 +659,11 @@
 			productName = Vapor;
 		};
 		92D6B44C28E438EF004CF9DF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92D6B44B28E438EF004CF9DF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		92D6B46828E47471004CF9DF /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 92D6B44B28E438EF004CF9DF /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
