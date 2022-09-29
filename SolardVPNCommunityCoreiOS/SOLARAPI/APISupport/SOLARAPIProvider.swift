@@ -30,23 +30,23 @@ extension SOLARAPIProvider {
         if mapsInnerErrors, let data = response.data {
             if let innerErrors = try? JSONDecoder().decode(InnerErrors.self, from: data),
                let firstError = innerErrors.errors.first {
-                return .generic(.init(code: firstError.code, message: firstError.message))
+                return .init(code: firstError.code, message: firstError.message)
             }
             
             if let innerError = try? JSONDecoder().decode(SingleInnerError.self, from: data).error {
-                return .generic(.init(code: innerError.code, message: innerError.message))
+                return .init(code: innerError.code, message: innerError.message)
             }
         }
         
         if let code = response.response?.statusCode {
-            return .generic(.init(code: code, message: error.localizedDescription))
+            return .init(code: code, message: error.localizedDescription)
         }
         
         if let underlyingError = error.underlyingError as? URLError {
-            return .generic(.init(code: underlyingError.errorCode, message: underlyingError.localizedDescription))
+            return .init(code: underlyingError.errorCode, message: underlyingError.localizedDescription)
         }
         
-        return .unknown(error)
+        return .init(code: error.responseCode ?? 0, message: error.localizedDescription)
     }
     
     func getResponseHandler<T>(mapsInnerErrors: Bool = false, completion: @escaping (Result<T, NetworkError>) -> Void)

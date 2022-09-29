@@ -7,12 +7,7 @@
 
 import Foundation
 
-public enum NetworkError: Error {
-    case generic(GenericNetworkError)
-    case unknown(Error)
-}
-
-public struct GenericNetworkError: Error {
+public struct NetworkError: Error {
     public let code: Int
     public let message: String?
     

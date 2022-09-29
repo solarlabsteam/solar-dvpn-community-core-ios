@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		923C371428E5B898003CFC03 /* CommonContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C371328E5B898003CFC03 /* CommonContext.swift */; };
+		923C371628E5B9DE003CFC03 /* ContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C371528E5B9DE003CFC03 /* ContextBuilder.swift */; };
 		92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */; };
 		92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */; };
 		92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B40028E19E20004CF9DF /* ViewController.swift */; };
@@ -24,11 +26,22 @@
 		92D6B44428E34A9B004CF9DF /* AnyEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B44328E34A9B004CF9DF /* AnyEncodable.swift */; };
 		92D6B44628E34D7C004CF9DF /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B44528E34D7C004CF9DF /* APIRequest.swift */; };
 		92D6B44D28E438EF004CF9DF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92D6B44C28E438EF004CF9DF /* Alamofire */; };
+		92D6B44F28E45EA0004CF9DF /* NodesAPITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B44E28E45EA0004CF9DF /* NodesAPITarget.swift */; };
+		92D6B45228E45F03004CF9DF /* NodesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45128E45F03004CF9DF /* NodesProvider.swift */; };
+		92D6B45428E45F15004CF9DF /* NodesProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45328E45F15004CF9DF /* NodesProviderType.swift */; };
 		92D6B45628E4609E004CF9DF /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45528E4609E004CF9DF /* APITarget.swift */; };
 		92D6B45828E46118004CF9DF /* SOLARAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45728E46118004CF9DF /* SOLARAPIProvider.swift */; };
 		92D6B45A28E46283004CF9DF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45928E46283004CF9DF /* NetworkError.swift */; };
+		92D6B45D28E4636B004CF9DF /* GetNodesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45C28E4636B004CF9DF /* GetNodesRequest.swift */; };
+		92D6B45F28E4639D004CF9DF /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B45E28E4639D004CF9DF /* OrderType.swift */; };
+		92D6B46128E463EF004CF9DF /* NodeStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B46028E463EF004CF9DF /* NodeStatusType.swift */; };
+		92D6B46328E47240004CF9DF /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B46228E47240004CF9DF /* Node.swift */; };
+		92D6B46628E47311004CF9DF /* PageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B46528E47311004CF9DF /* PageResponse.swift */; };
 		92D6B46928E47471004CF9DF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92D6B46828E47471004CF9DF /* Alamofire */; };
 		92D6B46C28E47519004CF9DF /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B46B28E47519004CF9DF /* Encodable+Ext.swift */; };
+		92D6B46F28E47E2E004CF9DF /* NodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B46E28E47E2E004CF9DF /* NodesService.swift */; };
+		92D6B47128E47E71004CF9DF /* NodesServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B47028E47E71004CF9DF /* NodesServiceType.swift */; };
+		92D6B47428E48F64004CF9DF /* Continent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B47328E48F64004CF9DF /* Continent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +69,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		923C371328E5B898003CFC03 /* CommonContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonContext.swift; sourceTree = "<group>"; };
+		923C371528E5B9DE003CFC03 /* ContextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextBuilder.swift; sourceTree = "<group>"; };
 		92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOLARdVPNCommunityCoreiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,10 +87,21 @@
 		92D6B42728E32900004CF9DF /* SOLARAPI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SOLARAPI.docc; sourceTree = "<group>"; };
 		92D6B44328E34A9B004CF9DF /* AnyEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEncodable.swift; sourceTree = "<group>"; };
 		92D6B44528E34D7C004CF9DF /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		92D6B44E28E45EA0004CF9DF /* NodesAPITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesAPITarget.swift; sourceTree = "<group>"; };
+		92D6B45128E45F03004CF9DF /* NodesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesProvider.swift; sourceTree = "<group>"; };
+		92D6B45328E45F15004CF9DF /* NodesProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesProviderType.swift; sourceTree = "<group>"; };
 		92D6B45528E4609E004CF9DF /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		92D6B45728E46118004CF9DF /* SOLARAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOLARAPIProvider.swift; sourceTree = "<group>"; };
 		92D6B45928E46283004CF9DF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		92D6B45C28E4636B004CF9DF /* GetNodesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNodesRequest.swift; sourceTree = "<group>"; };
+		92D6B45E28E4639D004CF9DF /* OrderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
+		92D6B46028E463EF004CF9DF /* NodeStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeStatusType.swift; sourceTree = "<group>"; };
+		92D6B46228E47240004CF9DF /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		92D6B46528E47311004CF9DF /* PageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageResponse.swift; sourceTree = "<group>"; };
 		92D6B46B28E47519004CF9DF /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
+		92D6B46E28E47E2E004CF9DF /* NodesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesService.swift; sourceTree = "<group>"; };
+		92D6B47028E47E71004CF9DF /* NodesServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesServiceType.swift; sourceTree = "<group>"; };
+		92D6B47328E48F64004CF9DF /* Continent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Continent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +126,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		923C371228E5B887003CFC03 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				923C371328E5B898003CFC03 /* CommonContext.swift */,
+				923C371528E5B9DE003CFC03 /* ContextBuilder.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
 		92D6B3F028E19E20004CF9DF = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +175,7 @@
 		92D6B41B28E2F62A004CF9DF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				923C371228E5B887003CFC03 /* Context */,
 				92D6B41C28E2F63D004CF9DF /* Utilities */,
 			);
 			path = Common;
@@ -178,6 +214,36 @@
 			path = APISupport;
 			sourceTree = "<group>";
 		};
+		92D6B44A28E4360D004CF9DF /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B45028E45EF1004CF9DF /* NodesProvider */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		92D6B45028E45EF1004CF9DF /* NodesProvider */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B45B28E46350004CF9DF /* Models */,
+				92D6B44E28E45EA0004CF9DF /* NodesAPITarget.swift */,
+				92D6B45128E45F03004CF9DF /* NodesProvider.swift */,
+				92D6B45328E45F15004CF9DF /* NodesProviderType.swift */,
+			);
+			path = NodesProvider;
+			sourceTree = "<group>";
+		};
+		92D6B45B28E46350004CF9DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B45C28E4636B004CF9DF /* GetNodesRequest.swift */,
+				92D6B46228E47240004CF9DF /* Node.swift */,
+				92D6B46028E463EF004CF9DF /* NodeStatusType.swift */,
+				92D6B45E28E4639D004CF9DF /* OrderType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		92D6B46428E47304004CF9DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,7 +267,36 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		92D6B46D28E47DD2004CF9DF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B47228E47EC9004CF9DF /* Models */,
+				92D6B46E28E47E2E004CF9DF /* NodesService.swift */,
+				92D6B47028E47E71004CF9DF /* NodesServiceType.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		92D6B47228E47EC9004CF9DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				92D6B47328E48F64004CF9DF /* Continent.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		92D6B41F28E32900004CF9DF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D6B43628E32900004CF9DF /* SOLARAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		92D6B3F828E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS */ = {
@@ -316,9 +411,14 @@
 			files = (
 				92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */,
 				92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */,
+				923C371428E5B898003CFC03 /* CommonContext.swift in Sources */,
 				92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */,
+				92D6B46F28E47E2E004CF9DF /* NodesService.swift in Sources */,
 				92D6B41428E1E133004CF9DF /* DVPNServer.swift in Sources */,
+				92D6B47428E48F64004CF9DF /* Continent.swift in Sources */,
+				92D6B47128E47E71004CF9DF /* NodesServiceType.swift in Sources */,
 				92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */,
+				923C371628E5B9DE003CFC03 /* ContextBuilder.swift in Sources */,
 				92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +428,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				92D6B44428E34A9B004CF9DF /* AnyEncodable.swift in Sources */,
+				92D6B44F28E45EA0004CF9DF /* NodesAPITarget.swift in Sources */,
+				92D6B45D28E4636B004CF9DF /* GetNodesRequest.swift in Sources */,
+				92D6B46628E47311004CF9DF /* PageResponse.swift in Sources */,
+				92D6B46128E463EF004CF9DF /* NodeStatusType.swift in Sources */,
+				92D6B45428E45F15004CF9DF /* NodesProviderType.swift in Sources */,
+				92D6B46328E47240004CF9DF /* Node.swift in Sources */,
+				92D6B45F28E4639D004CF9DF /* OrderType.swift in Sources */,
+				92D6B45228E45F03004CF9DF /* NodesProvider.swift in Sources */,
 				92D6B44628E34D7C004CF9DF /* APIRequest.swift in Sources */,
 				92D6B42828E32900004CF9DF /* SOLARAPI.docc in Sources */,
 				92D6B45A28E46283004CF9DF /* NetworkError.swift in Sources */,

@@ -8,15 +8,24 @@
 import Vapor
 
 struct NodesRouteCollection: RouteCollection {
+    let context: HasNodesService
+    
     func boot(routes: RoutesBuilder) throws {
-        routes.get(use: getNodes)
         routes.get(.init(stringLiteral: ClientConstants.apiPath), "nodes", use: getNodes)
     }
 }
 
 extension NodesRouteCollection {
-    func getNodes(_ req: Request) async throws -> Int {
-        
-        return 1
+    // TODO: Add parameters
+    func getNodes(_ req: Request) async throws -> String {
+        try await context.nodesService.loadNodes(
+            continent: nil,
+            countryCode: nil,
+            minPrice: nil,
+            maxPrice: nil,
+            orderBy: nil,
+            query: nil,
+            page: nil
+        )
     }
 }

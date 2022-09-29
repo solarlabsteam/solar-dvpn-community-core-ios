@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let server = DVPNServer()
+    let server = DVPNServer(context: ContextBuilder().buildContext())
 
     override func viewDidLoad() {
         super.viewDidLoad()
