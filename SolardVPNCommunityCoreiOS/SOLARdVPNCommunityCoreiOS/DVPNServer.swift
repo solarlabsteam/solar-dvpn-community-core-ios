@@ -23,7 +23,8 @@ extension DVPNServer {
     func start() {
         Task(priority: .background) {
             do {
-                try app.register(collection: NodesRouteCollection(context: context))
+                let api = app.grouped(.init(stringLiteral: ClientConstants.apiPath))
+                try api.register(collection: NodesRouteCollection(context: context))
                 try app.start()
             } catch {
                 fatalError(error.localizedDescription)

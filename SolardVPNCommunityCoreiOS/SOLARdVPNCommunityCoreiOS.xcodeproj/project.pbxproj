@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		923C371428E5B898003CFC03 /* CommonContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C371328E5B898003CFC03 /* CommonContext.swift */; };
 		923C371628E5B9DE003CFC03 /* ContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C371528E5B9DE003CFC03 /* ContextBuilder.swift */; };
+		923C371828E5D20D003CFC03 /* GetNodesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C371728E5D20D003CFC03 /* GetNodesRequest.swift */; };
+		923C371C28E5DA05003CFC03 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C371B28E5DA05003CFC03 /* OrderType.swift */; };
 		92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */; };
 		92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */; };
 		92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B40028E19E20004CF9DF /* ViewController.swift */; };
@@ -71,6 +73,8 @@
 /* Begin PBXFileReference section */
 		923C371328E5B898003CFC03 /* CommonContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonContext.swift; sourceTree = "<group>"; };
 		923C371528E5B9DE003CFC03 /* ContextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextBuilder.swift; sourceTree = "<group>"; };
+		923C371728E5D20D003CFC03 /* GetNodesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNodesRequest.swift; sourceTree = "<group>"; };
+		923C371B28E5DA05003CFC03 /* OrderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
 		92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOLARdVPNCommunityCoreiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				92D6B47328E48F64004CF9DF /* Continent.swift */,
+				923C371728E5D20D003CFC03 /* GetNodesRequest.swift */,
+				923C371B28E5DA05003CFC03 /* OrderType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -413,8 +419,10 @@
 				92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */,
 				923C371428E5B898003CFC03 /* CommonContext.swift in Sources */,
 				92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */,
+				923C371C28E5DA05003CFC03 /* OrderType.swift in Sources */,
 				92D6B46F28E47E2E004CF9DF /* NodesService.swift in Sources */,
 				92D6B41428E1E133004CF9DF /* DVPNServer.swift in Sources */,
+				923C371828E5D20D003CFC03 /* GetNodesRequest.swift in Sources */,
 				92D6B47428E48F64004CF9DF /* Continent.swift in Sources */,
 				92D6B47128E47E71004CF9DF /* NodesServiceType.swift in Sources */,
 				92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */,

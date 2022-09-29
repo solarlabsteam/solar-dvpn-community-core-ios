@@ -10,7 +10,7 @@ import SOLARAPI
 
 protocol NodesServiceType {
     func loadNodes(
-        continent: Continent?,
+        continentCode: String?,
         countryCode: String?,
         minPrice: Int?,
         maxPrice: Int?,

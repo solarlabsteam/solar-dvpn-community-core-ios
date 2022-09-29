@@ -23,7 +23,7 @@ final class NodesService {
 
 extension NodesService: NodesServiceType {
     func loadNodes(
-        continent: Continent?,
+        continentCode: String?,
         countryCode: String?,
         minPrice: Int?,
         maxPrice: Int?,
@@ -31,11 +31,11 @@ extension NodesService: NodesServiceType {
         query: String?,
         page: Int?
     ) async throws -> String {
-        try await withCheckedThrowingContinuation({  (continuation: CheckedContinuation<String, Error>) in
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
             nodesProvider.getNodes(
                 .init(
                     status: .active,
-                    continentCode: continent?.code,
+                    continentCode: continentCode,
                     countryCode: countryCode,
                     minPrice: minPrice,
                     maxPrice: maxPrice,
