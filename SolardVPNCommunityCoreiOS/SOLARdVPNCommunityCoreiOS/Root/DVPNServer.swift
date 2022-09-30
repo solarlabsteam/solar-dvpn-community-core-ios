@@ -9,9 +9,12 @@ import Vapor
 
 class DVPNServer: ObservableObject {
     let app: Application
+    private let context: CommonContext
     
-    init() {
+    init(context: CommonContext) {
         app = Application(.development)
+        self.context = context
+        
         configure(app)
     }
 }
@@ -20,7 +23,8 @@ extension DVPNServer {
     func start() {
         Task(priority: .background) {
             do {
-                try app.register(collection: NodesRouteCollection())
+                let api = app.grouped(.init(stringLiteral: ClientConstants.apiPath))
+                try api.register(collection: NodesRouteCollection(context: context))
                 try app.start()
             } catch {
                 fatalError(error.localizedDescription)
