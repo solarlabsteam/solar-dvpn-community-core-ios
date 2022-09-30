@@ -25,6 +25,7 @@ extension DVPNServer {
             do {
                 let api = app.grouped(.init(stringLiteral: ClientConstants.apiPath))
                 try api.register(collection: NodesRouteCollection(context: context))
+                try api.register(collection: TunnelRouteCollection(context: context))
                 try app.start()
             } catch {
                 fatalError(error.localizedDescription)
