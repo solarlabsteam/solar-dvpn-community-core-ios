@@ -45,11 +45,24 @@ extension NodesService: NodesServiceType {
                 )
             ) { result in
                 switch result {
-                case let .success(success):
-                    let result = try! JSONEncoder().encode(success)
-                    let string = String(decoding: result, as: UTF8.self)
-                    continuation.resume(returning: string)
-                    
+                case let .success(response):
+                    Encoder.encode(model: response, continuation: continuation)
+                case let .failure(error):
+                    continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
+                }
+            }
+        })
+    }
+    
+    func getNodes(
+        by addresses: [String],
+        page: Int?
+    ) async throws -> String {
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            nodesProvider.postNodesByAddress(.init(addresses: addresses, page: page)) { result in
+                switch result {
+                case let .success(response):
+                    Encoder.encode(model: response, continuation: continuation)
                 case let .failure(error):
                     continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
                 }
