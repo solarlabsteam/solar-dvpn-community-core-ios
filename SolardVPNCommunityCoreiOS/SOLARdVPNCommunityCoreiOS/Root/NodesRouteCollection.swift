@@ -16,7 +16,6 @@ struct NodesRouteCollection: RouteCollection {
 }
 
 extension NodesRouteCollection {
-    // TODO: Add parameters
     func getNodes(_ req: Request) async throws -> String {
         let continentCode = req.query[String.self, at: GetNodesRequest.CodingKeys.continentCode.rawValue]
         let countryCode = req.query[String.self, at: GetNodesRequest.CodingKeys.countryCode.rawValue]
