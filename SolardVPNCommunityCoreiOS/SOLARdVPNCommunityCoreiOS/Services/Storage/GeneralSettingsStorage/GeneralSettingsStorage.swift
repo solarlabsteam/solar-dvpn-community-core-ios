@@ -11,6 +11,10 @@ import Accessibility
 private enum Keys: String, CaseIterable {
     case walletKey
     case dnsKey
+    
+    case lastSelectedNodeKey
+    case lastSessionKey
+    case sessionStart
 }
 
 final class GeneralSettingsStorage {
@@ -22,7 +26,6 @@ final class GeneralSettingsStorage {
         self.settingsStorageStrategy = settingsStorageStrategy
     }
 }
-
 
 // MARK: - StoresWallet
 
@@ -56,3 +59,30 @@ extension GeneralSettingsStorage: StoresDNSServers {
     }
 }
 
+// MARK: - StoresConnectInfo
+
+extension GeneralSettingsStorage: StoresConnectInfo {
+    func set(lastSelectedNode: String?) {
+        settingsStorageStrategy.setObject(lastSelectedNode, forKey: Keys.lastSelectedNodeKey.rawValue)
+    }
+
+    func lastSelectedNode() -> String? {
+        settingsStorageStrategy.object(ofType: String.self, forKey: Keys.lastSelectedNodeKey.rawValue)
+    }
+
+    func set(sessionId: Int?) {
+        settingsStorageStrategy.setObject(sessionId, forKey: Keys.lastSessionKey.rawValue)
+    }
+
+    func lastSessionId() -> Int? {
+        settingsStorageStrategy.object(ofType: Int.self, forKey: Keys.lastSessionKey.rawValue)
+    }
+    
+    func set(sessionStart: Date?) {
+        settingsStorageStrategy.setObject(sessionStart, forKey: Keys.sessionStart.rawValue)
+    }
+    
+    func lastSessionStart() -> Date? {
+        settingsStorageStrategy.object(ofType: Date.self, forKey: Keys.sessionStart.rawValue)
+    }
+}
