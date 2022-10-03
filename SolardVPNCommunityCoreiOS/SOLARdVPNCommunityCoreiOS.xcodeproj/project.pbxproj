@@ -64,6 +64,8 @@
 		923C372028E71D19003CFC03 /* PostNodesByAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C371F28E71D19003CFC03 /* PostNodesByAddressRequest.swift */; };
 		923C372228E72C87003CFC03 /* NodesByAddressPostBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C372128E72C87003CFC03 /* NodesByAddressPostBody.swift */; };
 		923C372628EAE93E003CFC03 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C372528EAE93E003CFC03 /* Encoder.swift */; };
+		923C372828EAF0E8003CFC03 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C372728EAF0E8003CFC03 /* Country.swift */; };
+		923C372A28EAFAA5003CFC03 /* NodesServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C372928EAFAA5003CFC03 /* NodesServiceError.swift */; };
 		92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */; };
 		92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */; };
 		92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B40028E19E20004CF9DF /* ViewController.swift */; };
@@ -195,6 +197,8 @@
 		923C371F28E71D19003CFC03 /* PostNodesByAddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNodesByAddressRequest.swift; sourceTree = "<group>"; };
 		923C372128E72C87003CFC03 /* NodesByAddressPostBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesByAddressPostBody.swift; sourceTree = "<group>"; };
 		923C372528EAE93E003CFC03 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		923C372728EAF0E8003CFC03 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		923C372928EAFAA5003CFC03 /* NodesServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesServiceError.swift; sourceTree = "<group>"; };
 		92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOLARdVPNCommunityCoreiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -448,6 +452,7 @@
 			children = (
 				92D6B47228E47EC9004CF9DF /* Models */,
 				92D6B46E28E47E2E004CF9DF /* NodesService.swift */,
+				923C372928EAFAA5003CFC03 /* NodesServiceError.swift */,
 				92D6B47028E47E71004CF9DF /* NodesServiceType.swift */,
 			);
 			path = NodesService;
@@ -583,6 +588,7 @@
 		92D6B45B28E46350004CF9DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				923C372728EAF0E8003CFC03 /* Country.swift */,
 				92D6B45C28E4636B004CF9DF /* GetNodesRequest.swift */,
 				92D6B46228E47240004CF9DF /* Node.swift */,
 				92D6B46028E463EF004CF9DF /* NodeStatusType.swift */,
@@ -889,6 +895,7 @@
 				22C3EEAA28E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift in Sources */,
 				22488AA328E72C4E00FE29C3 /* StoresWallet.swift in Sources */,
 				22C3EED128E48B52007DB01B /* TunnelStatus.swift in Sources */,
+				923C372A28EAFAA5003CFC03 /* NodesServiceError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,6 +912,7 @@
 				92D6B46328E47240004CF9DF /* Node.swift in Sources */,
 				92D6B45F28E4639D004CF9DF /* OrderType.swift in Sources */,
 				92D6B45228E45F03004CF9DF /* NodesProvider.swift in Sources */,
+				923C372828EAF0E8003CFC03 /* Country.swift in Sources */,
 				92D6B44628E34D7C004CF9DF /* APIRequest.swift in Sources */,
 				92D6B42828E32900004CF9DF /* SOLARAPI.docc in Sources */,
 				92D6B45A28E46283004CF9DF /* NetworkError.swift in Sources */,

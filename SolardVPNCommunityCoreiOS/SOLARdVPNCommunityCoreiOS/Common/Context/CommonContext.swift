@@ -11,20 +11,23 @@ import SOLARAPI
 protocol NoContext {}
 
 final class CommonContext {
+    // Providers
+    let nodesProvider: NodesProviderType
+    
+    // Services
     let nodesService: NodesServiceType
-    let tunnelManager: TunnelManagerType
     
     init(
-        nodesService: NodesServiceType,
-        tunnelManager: TunnelManagerType
+        nodesProvider: NodesProviderType,
+        nodesService: NodesServiceType
     ) {
+        self.nodesProvider = nodesProvider
         self.nodesService = nodesService
-        self.tunnelManager = tunnelManager
     }
 }
 
+protocol HasNodesProvider { var nodesProvider: NodesProviderType { get } }
+extension CommonContext: HasNodesProvider {}
+
 protocol HasNodesService { var nodesService: NodesServiceType { get } }
 extension CommonContext: HasNodesService {}
-
-protocol HasTunnelManager { var tunnelManager: TunnelManagerType { get } }
-extension CommonContext: HasTunnelManager {}

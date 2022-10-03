@@ -9,18 +9,16 @@ import Foundation
 import SOLARAPI
 
 protocol NodesServiceType {
+    var nodes: [Node] { get }
     func loadNodes(
-        continentCode: String?,
+        continent: Continent?,
         countryCode: String?,
         minPrice: Int?,
         maxPrice: Int?,
         orderBy: OrderType?,
         query: String?,
-        page: Int?
-    ) async throws -> String
-    
-    func getNodes(
-        by: [String],
-        page: Int?
-    ) async throws -> String
+        page: Int?,
+        completion: @escaping (Result<PageResponse<Node>, Error>) -> Void
+    )
+    func getNode(by: String, completion: @escaping (Result<Node, Error>) -> Void)
 }

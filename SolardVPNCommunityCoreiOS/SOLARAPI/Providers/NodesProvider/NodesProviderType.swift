@@ -18,4 +18,6 @@ public protocol NodesProviderType {
         _ postNodesRequest: PostNodesByAddressRequest,
         completion: @escaping (Result<PageResponse<Node>, NetworkError>) -> Void
     )
+    
+    func getCountries(completion: @escaping (Result<[Country], NetworkError>) -> Void)
 }
