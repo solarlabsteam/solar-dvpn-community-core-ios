@@ -12,6 +12,7 @@ struct NodesRouteCollection: RouteCollection {
     
     func boot(routes: RoutesBuilder) throws {
         routes.get("nodes",  use: getNodes)
+        routes.post("nodesByAddress", use: postNodesByAddress)
     }
 }
 
@@ -33,6 +34,15 @@ extension NodesRouteCollection {
             orderBy: orderBy,
             query: query,
             page: page
+        )
+    }
+    
+    func postNodesByAddress(_ req: Request) async throws -> String {
+        let body = try req.content.decode(NodesByAddressPostBody.self)
+        
+        return try await context.nodesService.getNodes(
+            by: body.blockchain_addresses,
+            page: body.page
         )
     }
 }

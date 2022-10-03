@@ -10,6 +10,7 @@ import Alamofire
 
 enum NodesAPITarget {
     case getNodes(GetNodesRequest)
+    case postNodesByAddress(PostNodesByAddressRequest)
 }
 
 extension NodesAPITarget: APITarget {
@@ -17,6 +18,8 @@ extension NodesAPITarget: APITarget {
         switch self {
         case .getNodes:
             return .get
+        case .postNodesByAddress:
+            return .post
         }
     }
 
@@ -24,6 +27,8 @@ extension NodesAPITarget: APITarget {
         switch self {
         case .getNodes:
             return "dvpn/getNodes"
+        case .postNodesByAddress:
+            return "dvpn/postNodesByAddress"
         }
     }
 
@@ -31,6 +36,8 @@ extension NodesAPITarget: APITarget {
         switch self {
         case let .getNodes(request):
             return .requestParameters(parameters: request.dictionary ?? [:], encoding: URLEncoding.default)
+        case let .postNodesByAddress(request):
+            return .requestJSONEncodable(request)
         }
     }
 }

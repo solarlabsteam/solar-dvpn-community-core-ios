@@ -13,4 +13,9 @@ public protocol NodesProviderType {
         _ getNodesRequest: GetNodesRequest,
         completion: @escaping (Result<PageResponse<Node>, NetworkError>) -> Void
     )
+    
+    func postNodesByAddress(
+        _ postNodesRequest: PostNodesByAddressRequest,
+        completion: @escaping (Result<PageResponse<Node>, NetworkError>) -> Void
+    )
 }

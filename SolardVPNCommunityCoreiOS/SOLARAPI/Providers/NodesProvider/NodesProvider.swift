@@ -34,6 +34,16 @@ extension NodesProvider: NodesProviderType {
             .validate()
             .responseDecodable(completionHandler: getResponseHandler(completion: completion))
     }
+    
+    public func postNodesByAddress(
+        _ postNodesRequest: PostNodesByAddressRequest,
+        completion: @escaping (Result<PageResponse<Node>, NetworkError>) -> Void
+    ) {
+        AF
+            .request(request(for: .postNodesByAddress(postNodesRequest)))
+            .validate()
+            .responseDecodable(completionHandler: getResponseHandler(completion: completion))
+    }
 }
 
 private extension NodesProvider {

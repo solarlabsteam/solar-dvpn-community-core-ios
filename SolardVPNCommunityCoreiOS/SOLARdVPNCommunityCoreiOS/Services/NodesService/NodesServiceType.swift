@@ -18,4 +18,9 @@ protocol NodesServiceType {
         query: String?,
         page: Int?
     ) async throws -> String
+    
+    func getNodes(
+        by: [String],
+        page: Int?
+    ) async throws -> String
 }
