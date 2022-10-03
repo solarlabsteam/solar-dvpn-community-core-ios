@@ -14,7 +14,7 @@ enum Continent: String, CaseIterable {
     case asia = "AS"
     case europe = "EU"
     case oceania = "OC"
-    case antarctica = "AQ"
+    case antarctica = "AN"
 }
 
 extension Continent {
