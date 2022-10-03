@@ -31,7 +31,7 @@ extension NodesAPITarget: APITarget {
         case .getNodes:
             return "dvpn/getNodes"
         case .postNodesByAddress:
-            return "dvpn/postNodesByAddress"
+            return "dvpn/getNodesByAddress"
         case .getCountries:
             return "dvpn/getCountries"
         }
