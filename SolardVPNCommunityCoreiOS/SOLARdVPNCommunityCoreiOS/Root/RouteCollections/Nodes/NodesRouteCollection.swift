@@ -6,9 +6,10 @@
 //
 
 import Vapor
+import SOLARAPI
 
 struct NodesRouteCollection: RouteCollection {
-    let context: HasNodesService
+    let context: HasNodesProvider
     
     func boot(routes: RoutesBuilder) throws {
         routes.get("nodes", use: getNodes)
@@ -27,27 +28,56 @@ extension NodesRouteCollection {
         let query = req.query[String.self, at: GetNodesRequest.CodingKeys.query.rawValue]
         let page = req.query[Int.self, at: GetNodesRequest.CodingKeys.page.rawValue]
         
-        return try await context.nodesService.loadNodes(
-            continentCode: continentCode,
-            countryCode: countryCode,
-            minPrice: minPrice,
-            maxPrice: maxPrice,
-            orderBy: orderBy,
-            query: query,
-            page: page
-        )
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            context.nodesProvider.getNodes(
+                .init(
+                    status: .active,
+                    continentCode: continentCode,
+                    countryCode: countryCode,
+                    minPrice: minPrice,
+                    maxPrice: maxPrice,
+                    orderBy: orderBy,
+                    query: query,
+                    page: page
+                )
+            ) { result in
+                switch result {
+                case let .success(response):
+                    Encoder.encode(model: response, continuation: continuation)
+                case let .failure(error):
+                    continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
+                }
+            }
+        })
     }
     
     func postNodesByAddress(_ req: Request) async throws -> String {
         let body = try req.content.decode(NodesByAddressPostBody.self)
         
-        return try await context.nodesService.getNodes(
-            by: body.blockchain_addresses,
-            page: body.page
-        )
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            context.nodesProvider.postNodesByAddress(
+                .init(addresses: body.blockchain_addresses, page: body.page)
+            ) { result in
+                switch result {
+                case let .success(response):
+                    Encoder.encode(model: response, continuation: continuation)
+                case let .failure(error):
+                    continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
+                }
+            }
+        })
     }
     
     func getCountries(_ req: Request) async throws -> String {
-        try await context.nodesService.getCountries()
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            context.nodesProvider.getCountries() { result in
+                switch result {
+                case let .success(response):
+                    Encoder.encode(model: response, continuation: continuation)
+                case let .failure(error):
+                    continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
+                }
+            }
+        })
     }
 }

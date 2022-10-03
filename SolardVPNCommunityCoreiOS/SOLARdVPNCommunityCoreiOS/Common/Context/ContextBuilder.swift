@@ -16,6 +16,7 @@ final class ContextBuilder {
         let nodesService = NodesService(nodesProvider: nodesProvider)
         
         return CommonContext(
+            nodesProvider: nodesProvider,
             nodesService: nodesService
         )
     }

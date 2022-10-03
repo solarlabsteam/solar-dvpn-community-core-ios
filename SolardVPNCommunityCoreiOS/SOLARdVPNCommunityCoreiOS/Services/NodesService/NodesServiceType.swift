@@ -9,20 +9,4 @@ import Foundation
 import SOLARAPI
 
 protocol NodesServiceType {
-    func loadNodes(
-        continentCode: String?,
-        countryCode: String?,
-        minPrice: Int?,
-        maxPrice: Int?,
-        orderBy: OrderType?,
-        query: String?,
-        page: Int?
-    ) async throws -> String
-    
-    func getNodes(
-        by: [String],
-        page: Int?
-    ) async throws -> String
-    
-    func getCountries() async throws -> String
 }
