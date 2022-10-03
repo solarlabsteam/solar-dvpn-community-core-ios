@@ -13,13 +13,14 @@ enum Continent: String, CaseIterable {
     case northAmerica = "NA"
     case asia = "AS"
     case europe = "EU"
-    /// rest of the world
-    case other
-    case any
+    case oceania = "OC"
+    case antarctica = "AQ"
 }
 
 extension Continent {
     var code: String? {
-        self == .any || self == .other ? nil : self.rawValue
+        self.rawValue
     }
 }
+
+extension Continent: Codable {}

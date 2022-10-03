@@ -13,16 +13,24 @@ final class NodesService {
     
     private var loadedNodes: [Node] = []
     
+    private var loadedCountries: [Country] = []
+    private var _countriesInContinents: [Continent: [Country]] = [:]
+    
     init(
         nodesProvider: NodesProviderType
     ) {
         self.nodesProvider = nodesProvider
+        
+        getCountries() { _ in }
     }
 }
 
 // MARK: - NodesServiceType
 
 extension NodesService: NodesServiceType {
+    
+    // MARK: - Nodes
+    
     var nodes: [Node] {
         loadedNodes
     }
@@ -79,5 +87,45 @@ extension NodesService: NodesServiceType {
                 completion(.success(node))
             }
         }
+    }
+    
+    // MARK: - Countries & Continents
+    
+    var nodesInContinentsCount: [Continent: Int] {
+        _countriesInContinents.reduce([:]) { acc, entry in
+            var tempAcc = acc
+            tempAcc[entry.key] = entry.value.map { $0.nodesCount }.reduce(0) { $0 + $1 }
+            return tempAcc
+        }
+    }
+    
+    func getCountries(completion: @escaping (Result<[Country], Error>) -> Void) {
+        nodesProvider.getCountries() { [weak self] result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+            case let .success(countries):
+                self?.loadedCountries = countries
+                self?.countNodesInContinentsCount()
+                completion(.success(countries))
+            }
+        }
+    }
+}
+
+// MARK: - Private
+
+extension NodesService {
+    private func countNodesInContinentsCount() {
+        Continent.allCases.forEach {
+            _countriesInContinents[$0] = []
+        }
+        
+        loadedCountries
+            .forEach { country in
+                if let continent = ContinentDecoder().getContinent(for: country.code) {
+                    _countriesInContinents[continent]?.append(country)
+                }
+            }
     }
 }

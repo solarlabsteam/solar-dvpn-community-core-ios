@@ -58,6 +58,10 @@
 		923C372628EAE93E003CFC03 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C372528EAE93E003CFC03 /* Encoder.swift */; };
 		923C372828EAF0E8003CFC03 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C372728EAF0E8003CFC03 /* Country.swift */; };
 		923C372A28EAFAA5003CFC03 /* NodesServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C372928EAFAA5003CFC03 /* NodesServiceError.swift */; };
+		923C372C28EB08BB003CFC03 /* ContinentDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C372B28EB08BB003CFC03 /* ContinentDecoder.swift */; };
+		923C372E28EB0BEE003CFC03 /* continents.json in Resources */ = {isa = PBXBuildFile; fileRef = 923C372D28EB0BED003CFC03 /* continents.json */; };
+		923C373128EB0CB2003CFC03 /* CountryExtra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C373028EB0CB2003CFC03 /* CountryExtra.swift */; };
+		923C373328EB150A003CFC03 /* GetContinentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C373228EB150A003CFC03 /* GetContinentResponse.swift */; };
 		92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */; };
 		92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */; };
 		92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B40028E19E20004CF9DF /* ViewController.swift */; };
@@ -184,6 +188,10 @@
 		923C372528EAE93E003CFC03 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		923C372728EAF0E8003CFC03 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		923C372928EAFAA5003CFC03 /* NodesServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodesServiceError.swift; sourceTree = "<group>"; };
+		923C372B28EB08BB003CFC03 /* ContinentDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentDecoder.swift; sourceTree = "<group>"; };
+		923C372D28EB0BED003CFC03 /* continents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = continents.json; sourceTree = "<group>"; };
+		923C373028EB0CB2003CFC03 /* CountryExtra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryExtra.swift; sourceTree = "<group>"; };
+		923C373228EB150A003CFC03 /* GetContinentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContinentResponse.swift; sourceTree = "<group>"; };
 		92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOLARdVPNCommunityCoreiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -389,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				92D6B40528E19E21004CF9DF /* Assets.xcassets */,
+				923C372D28EB0BED003CFC03 /* continents.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -396,6 +405,7 @@
 		22C3EF0A28E6FEF0007DB01B /* NodesService */ = {
 			isa = PBXGroup;
 			children = (
+				923C372F28EB0CA5003CFC03 /* ContinentDecoder */,
 				92D6B47228E47EC9004CF9DF /* Models */,
 				92D6B46E28E47E2E004CF9DF /* NodesService.swift */,
 				923C372928EAFAA5003CFC03 /* NodesServiceError.swift */,
@@ -424,10 +434,28 @@
 		923C372428E72FF0003CFC03 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				923C372128E72C87003CFC03 /* NodesByAddressPostBody.swift */,
+				923C373428EB1512003CFC03 /* Models */,
 				92D6B41728E2DC85004CF9DF /* NodesRouteCollection.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		923C372F28EB0CA5003CFC03 /* ContinentDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				923C372B28EB08BB003CFC03 /* ContinentDecoder.swift */,
+				923C373028EB0CB2003CFC03 /* CountryExtra.swift */,
+			);
+			path = ContinentDecoder;
+			sourceTree = "<group>";
+		};
+		923C373428EB1512003CFC03 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				923C373228EB150A003CFC03 /* GetContinentResponse.swift */,
+				923C372128E72C87003CFC03 /* NodesByAddressPostBody.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		92D6B3F028E19E20004CF9DF = {
@@ -756,6 +784,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923C372E28EB0BEE003CFC03 /* continents.json in Resources */,
 				92D6B40928E19E21004CF9DF /* LaunchScreen.storyboard in Resources */,
 				92D6B40628E19E21004CF9DF /* Assets.xcassets in Resources */,
 				92D6B40428E19E20004CF9DF /* Main.storyboard in Resources */,
@@ -794,6 +823,8 @@
 				923C372628EAE93E003CFC03 /* Encoder.swift in Sources */,
 				92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */,
 				923C371428E5B898003CFC03 /* CommonContext.swift in Sources */,
+				923C372C28EB08BB003CFC03 /* ContinentDecoder.swift in Sources */,
+				923C373128EB0CB2003CFC03 /* CountryExtra.swift in Sources */,
 				92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */,
 				923C371C28E5DA05003CFC03 /* OrderType.swift in Sources */,
 				92D6B46F28E47E2E004CF9DF /* NodesService.swift in Sources */,
@@ -831,6 +862,7 @@
 				22C3EEE428E48D9A007DB01B /* NETunnelProviderManager+Ext.swift in Sources */,
 				22C3EEAA28E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift in Sources */,
 				22C3EED128E48B52007DB01B /* TunnelStatus.swift in Sources */,
+				923C373328EB150A003CFC03 /* GetContinentResponse.swift in Sources */,
 				923C372A28EAFAA5003CFC03 /* NodesServiceError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,12 +9,13 @@ import Vapor
 import SOLARAPI
 
 struct NodesRouteCollection: RouteCollection {
-    let context: HasNodesProvider
+    let context: HasNodesProvider & HasNodesService
     
     func boot(routes: RoutesBuilder) throws {
         routes.get("nodes", use: getNodes)
         routes.post("nodesByAddress", use: postNodesByAddress)
         routes.get("countries", use: getCountries)
+        routes.get("continents", use: getContinents)
     }
 }
 
@@ -78,6 +79,15 @@ extension NodesRouteCollection {
                     continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
                 }
             }
+        })
+    }
+    
+    func getContinents(_ req: Request) async throws -> String {
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            let response = context.nodesService.nodesInContinentsCount
+                .map { GetContinentResponse(code: $0.key.rawValue, nodesCount: $0.value) }
+            
+            Encoder.encode(model: response, continuation: continuation)
         })
     }
 }

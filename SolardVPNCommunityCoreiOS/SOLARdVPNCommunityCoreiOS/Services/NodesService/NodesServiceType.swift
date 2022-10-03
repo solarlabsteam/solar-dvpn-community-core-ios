@@ -9,6 +9,9 @@ import Foundation
 import SOLARAPI
 
 protocol NodesServiceType {
+    
+    // MARK: - Nodes
+    
     var nodes: [Node] { get }
     func loadNodes(
         continent: Continent?,
@@ -21,4 +24,8 @@ protocol NodesServiceType {
         completion: @escaping (Result<PageResponse<Node>, Error>) -> Void
     )
     func getNode(by: String, completion: @escaping (Result<Node, Error>) -> Void)
+    
+    // MARK: - Countries & Continents
+    
+    var nodesInContinentsCount: [Continent: Int] { get }
 }
