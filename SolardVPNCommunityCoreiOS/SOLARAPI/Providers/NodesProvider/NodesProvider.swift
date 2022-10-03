@@ -44,6 +44,13 @@ extension NodesProvider: NodesProviderType {
             .validate()
             .responseDecodable(completionHandler: getResponseHandler(completion: completion))
     }
+    
+    public func getCountries(completion: @escaping (Result<[Country], NetworkError>) -> Void) {
+        AF
+            .request(request(for: .getCountries))
+            .validate()
+            .responseDecodable(completionHandler: getResponseHandler(completion: completion))
+    }
 }
 
 private extension NodesProvider {

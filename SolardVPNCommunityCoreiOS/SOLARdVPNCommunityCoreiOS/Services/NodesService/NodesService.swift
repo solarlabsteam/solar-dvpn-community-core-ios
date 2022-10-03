@@ -69,4 +69,17 @@ extension NodesService: NodesServiceType {
             }
         })
     }
+    
+    func getCountries() async throws -> String {
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            nodesProvider.getCountries() { result in
+                switch result {
+                case let .success(response):
+                    Encoder.encode(model: response, continuation: continuation)
+                case let .failure(error):
+                    continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
+                }
+            }
+        })
+    }
 }

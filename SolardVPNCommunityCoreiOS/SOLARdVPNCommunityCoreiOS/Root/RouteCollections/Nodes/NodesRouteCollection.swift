@@ -11,8 +11,9 @@ struct NodesRouteCollection: RouteCollection {
     let context: HasNodesService
     
     func boot(routes: RoutesBuilder) throws {
-        routes.get("nodes",  use: getNodes)
+        routes.get("nodes", use: getNodes)
         routes.post("nodesByAddress", use: postNodesByAddress)
+        routes.get("countries", use: getCountries)
     }
 }
 
@@ -44,5 +45,9 @@ extension NodesRouteCollection {
             by: body.blockchain_addresses,
             page: body.page
         )
+    }
+    
+    func getCountries(_ req: Request) async throws -> String {
+        try await context.nodesService.getCountries()
     }
 }

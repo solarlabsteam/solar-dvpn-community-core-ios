@@ -23,4 +23,6 @@ protocol NodesServiceType {
         by: [String],
         page: Int?
     ) async throws -> String
+    
+    func getCountries() async throws -> String
 }
