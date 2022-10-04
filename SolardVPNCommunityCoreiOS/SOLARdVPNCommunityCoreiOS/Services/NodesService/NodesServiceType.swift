@@ -27,5 +27,6 @@ protocol NodesServiceType {
     
     // MARK: - Countries & Continents
     
+    var countriesInContinents: [Continent: [Country]] { get }
     var nodesInContinentsCount: [Continent: Int] { get }
 }

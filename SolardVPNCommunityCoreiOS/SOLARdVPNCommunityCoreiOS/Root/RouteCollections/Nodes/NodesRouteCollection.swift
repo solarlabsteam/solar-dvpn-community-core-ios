@@ -16,6 +16,7 @@ struct NodesRouteCollection: RouteCollection {
         routes.post("nodesByAddress", use: postNodesByAddress)
         routes.get("countries", use: getCountries)
         routes.get("continents", use: getContinents)
+        routes.get("countriesByContinent", use: getCountriesByContinent)
     }
 }
 
@@ -87,6 +88,19 @@ extension NodesRouteCollection {
             let response = context.nodesService.nodesInContinentsCount
                 .map { GetContinentResponse(code: $0.key.rawValue, nodesCount: $0.value) }
             
+            Encoder.encode(model: response, continuation: continuation)
+        })
+    }
+    
+    func getCountriesByContinent(_ req: Request) async throws -> String {
+        let continentCode = req.query[String.self, at: "continent"]
+        
+        guard let continent = Continent(rawValue: continentCode ?? "") else {
+            throw Abort(.badRequest)
+        }
+        
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            let response = context.nodesService.countriesInContinents[continent]
             Encoder.encode(model: response, continuation: continuation)
         })
     }

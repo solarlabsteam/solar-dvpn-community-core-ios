@@ -99,6 +99,10 @@ extension NodesService: NodesServiceType {
         }
     }
     
+    var countriesInContinents: [Continent: [Country]] {
+        _countriesInContinents
+    }
+    
     func getCountries(completion: @escaping (Result<[Country], Error>) -> Void) {
         nodesProvider.getCountries() { [weak self] result in
             switch result {
