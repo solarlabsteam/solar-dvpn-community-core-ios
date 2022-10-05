@@ -15,6 +15,7 @@ struct WalletRouteCollection: RouteCollection {
         routes.get("wallet", use: getWallet)
         routes.put("wallet", use: putWallet)
         routes.post("wallet", use: postWallet)
+        routes.delete("wallet", use: deleteWallet)
     }
 }
 
@@ -84,6 +85,11 @@ extension WalletRouteCollection {
                 }
             }
         })
+    }
+
+    func deleteWallet(_ req: Request) -> Response {
+        context.resetWalletContext()
+        return Response()
     }
 }
 
