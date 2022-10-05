@@ -15,7 +15,6 @@ enum ConnectionModelError: String, Error {
     case signatureGenerationFailed
     case nodeIsOffline
     case balanceUpdateFailed
-    case noSelectedNode
     case noSubscription
     case noQuotaLeft
     case tunnelIsAlreadyActive
@@ -28,8 +27,6 @@ enum ConnectionModelError: String, Error {
             return .init(code: 500, message: self.rawValue)
         case .balanceUpdateFailed:
             return .init(code: 500, message: self.rawValue)
-        case .noSelectedNode:
-            return .init(code: 404, message: self.rawValue)
         case .noSubscription:
             return .init(code: 404, message: self.rawValue)
         case .noQuotaLeft:

@@ -19,6 +19,6 @@ struct PostConnectionRequest: Codable {
 
 extension PostConnectionRequest {
     enum CodingKeys: String, CodingKey {
-        case nodeAddress = "node_address"
+        case nodeAddress
     }
 }
