@@ -18,13 +18,3 @@ struct Wallet: Codable {
         self.currency = currency
     }
 }
-
-// MARK: - Codable implementation
-
-extension Wallet {
-    enum CodingKeys: String, CodingKey {
-        case address
-        case balance
-        case currency
-    }
-}
