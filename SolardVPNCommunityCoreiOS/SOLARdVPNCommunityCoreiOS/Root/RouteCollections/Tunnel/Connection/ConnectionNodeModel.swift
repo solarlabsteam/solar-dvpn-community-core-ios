@@ -14,7 +14,6 @@ import GRPC
 
 private struct Constants {
     let timeout: TimeInterval = 15
-    let denom = "udvpn"
 }
 
 private let constants = Constants()
@@ -279,7 +278,7 @@ extension ConnectionNodeModel {
             case .success(let balances):
                 guard balances
                     .contains(
-                        where: { $0.denom == constants.denom && Int($0.amount) ?? 0 >= self.context.walletService.fee }
+                        where: { $0.denom == ClientConstants.denom && Int($0.amount) ?? 0 >= self.context.walletService.fee }
                     ) else {
                     self.delegate?.show(warning: WalletServiceError.notEnoughTokens)
                     self.delegate?.set(isLoading: false)

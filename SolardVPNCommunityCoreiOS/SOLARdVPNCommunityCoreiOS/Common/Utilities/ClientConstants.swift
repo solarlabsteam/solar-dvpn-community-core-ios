@@ -18,6 +18,8 @@ enum ClientConstants {
     static let apiPath = "api"
     
     static let backendURL = URL(string: "https://BACKEND")!
+    
+    static let denom = "udvpn"
 }
 
 final class ApplicationConfiguration: ClientConnectionConfigurationType {

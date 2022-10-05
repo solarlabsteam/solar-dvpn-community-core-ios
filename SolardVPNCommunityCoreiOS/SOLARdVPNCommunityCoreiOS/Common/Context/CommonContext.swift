@@ -98,6 +98,9 @@ extension CommonContext: HasTunnelManager {}
 protocol HasSessionsService { var sessionsService: SessionsServiceType { get } }
 extension CommonContext: HasSessionsService {}
 
+protocol HasSecurityService { var securityService: SecurityService { get } }
+extension CommonContext: HasSecurityService {}
+
 // MARK: - Storages
 
 protocol HasConnectionInfoStorage { var connectionInfoStorage: StoresConnectInfo { get } }
