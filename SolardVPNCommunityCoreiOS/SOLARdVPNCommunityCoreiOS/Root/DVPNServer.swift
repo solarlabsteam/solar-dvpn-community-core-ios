@@ -9,11 +9,13 @@ import Vapor
 
 class DVPNServer: ObservableObject {
     let app: Application
+    private var currentClientConnection: WebSocket?
     private let context: CommonContext
     
     init(context: CommonContext) {
         app = Application(.development)
         self.context = context
+        Config.setup()
         
         configure(app)
     }
@@ -25,6 +27,12 @@ extension DVPNServer {
             do {
                 let api = app.grouped(.init(stringLiteral: ClientConstants.apiPath))
                 try api.register(collection: NodesRouteCollection(context: context))
+                try api.register(collection:
+                                    TunnelRouteCollection(
+                                        model: ConnectionModel(context: context),
+                                        delegate: self
+                                    )
+                )
                 try app.start()
             } catch {
                 fatalError(error.localizedDescription)
@@ -39,5 +47,30 @@ extension DVPNServer {
     private func configure(_ app: Application) {
         app.http.server.configuration.hostname = ClientConstants.host
         app.http.server.configuration.port = ClientConstants.port
+        
+        configureConnection()
+    }
+    
+    private func configureConnection() {
+        app.webSocket("echo") { [weak self] req, client in
+            client.pingInterval = .seconds(5)
+            self?.currentClientConnection = client
+            
+            client.onClose.whenComplete { _ in
+                self?.currentClientConnection = nil
+            }
+            
+            client.onText { ws, text in
+                log.debug(text)
+            }
+        }
+    }
+}
+
+// MARK: - WebSocketDelegate
+
+extension DVPNServer: WebSocketDelegate {
+    func send(event: String) {
+        currentClientConnection?.send(event)
     }
 }

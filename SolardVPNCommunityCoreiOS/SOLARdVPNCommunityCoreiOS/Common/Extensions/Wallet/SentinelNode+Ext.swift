@@ -8,7 +8,7 @@
 import SentinelWallet
 
 extension SentinelNode {
-    func set(node: Node) -> SentinelNode {
+    func set(node: SentinelWallet.Node) -> SentinelNode {
         return .init(
             address: self.address,
             provider: self.provider,
