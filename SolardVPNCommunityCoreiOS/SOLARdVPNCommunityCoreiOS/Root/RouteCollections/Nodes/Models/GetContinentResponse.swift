@@ -10,11 +10,6 @@ import Foundation
 struct GetContinentResponse: Codable {
     let code: String
     let nodesCount: Int
-    
-    init(code: String, nodesCount: Int) {
-        self.code = code
-        self.nodesCount = nodesCount
-    }
 }
 
 // MARK: - Codable implementation

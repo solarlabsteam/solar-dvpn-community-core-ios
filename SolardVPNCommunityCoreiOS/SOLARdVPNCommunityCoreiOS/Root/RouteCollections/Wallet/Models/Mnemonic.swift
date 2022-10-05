@@ -9,8 +9,4 @@ import Foundation
 
 struct Mnemonic: Codable {
     let mnemonic: String
-    
-    init(mnemonic: String) {
-        self.mnemonic = mnemonic
-    }
 }
