@@ -27,11 +27,12 @@ extension DVPNServer {
             do {
                 let api = app.grouped(.init(stringLiteral: ClientConstants.apiPath))
                 try api.register(collection: NodesRouteCollection(context: context))
-                try api.register(collection:
-                                    TunnelRouteCollection(
-                                        model: ConnectionModel(context: context),
-                                        delegate: self
-                                    )
+                try api.register(
+                    collection:
+                        TunnelRouteCollection(
+                            model: ConnectionModel(context: context),
+                            delegate: self
+                        )
                 )
                 try app.start()
             } catch {

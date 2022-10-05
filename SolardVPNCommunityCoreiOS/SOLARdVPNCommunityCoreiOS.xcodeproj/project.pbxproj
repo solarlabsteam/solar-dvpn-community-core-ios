@@ -37,6 +37,7 @@
 		225A83A228EB06BF00F66619 /* NodesProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83A128EB06BF00F66619 /* NodesProviderType.swift */; };
 		225A83A328EB14B200F66619 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EF0028E6FD95007DB01B /* PacketTunnelProvider.swift */; };
 		225A83A628EC81E500F66619 /* WebSocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83A528EC81E500F66619 /* WebSocketDelegate.swift */; };
+		225A83AC28EDB3C100F66619 /* InfoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83AB28EDB3C100F66619 /* InfoEvent.swift */; };
 		22C3EE9028E4638E007DB01B /* WireGuardNetworkExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22C3EE9728E463D6007DB01B /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9628E463D6007DB01B /* WireGuardKit */; };
 		22C3EE9A28E464A1007DB01B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9928E464A1007DB01B /* Alamofire */; };
@@ -200,6 +201,7 @@
 		225A839C28EAE54400F66619 /* SecurityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityService.swift; sourceTree = "<group>"; };
 		225A83A128EB06BF00F66619 /* NodesProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesProviderType.swift; sourceTree = "<group>"; };
 		225A83A528EC81E500F66619 /* WebSocketDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketDelegate.swift; sourceTree = "<group>"; };
+		225A83AB28EDB3C100F66619 /* InfoEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoEvent.swift; sourceTree = "<group>"; };
 		22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WireGuardNetworkExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C3EE9B28E467E4007DB01B /* SOLARdVPNCommunityCoreiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SOLARdVPNCommunityCoreiOS.entitlements; sourceTree = "<group>"; };
 		22C3EE9D28E4733C007DB01B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -420,6 +422,14 @@
 				22488A9528E7285500FE29C3 /* PostConnectionRequest.swift */,
 			);
 			path = Tunnel;
+			sourceTree = "<group>";
+		};
+		225A83AA28EDB3B200F66619 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				225A83AB28EDB3C100F66619 /* InfoEvent.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		22C3EE9C28E4733C007DB01B /* Shared */ = {
@@ -660,6 +670,7 @@
 		92D6B41B28E2F62A004CF9DF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				225A83AA28EDB3B200F66619 /* Models */,
 				923C371228E5B887003CFC03 /* Context */,
 				22C3EED528E48D9A007DB01B /* Extensions */,
 				92D6B41C28E2F63D004CF9DF /* Utilities */,
@@ -1038,6 +1049,7 @@
 				92D6B47128E47E71004CF9DF /* NodesServiceType.swift in Sources */,
 				22C3EEA828E4733C007DB01B /* Keychain.swift in Sources */,
 				923C372228E72C87003CFC03 /* NodesByAddressPostBody.swift in Sources */,
+				225A83AC28EDB3C100F66619 /* InfoEvent.swift in Sources */,
 				22C3EECE28E48B52007DB01B /* PeersModel.swift in Sources */,
 				92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */,
 				923C371628E5B9DE003CFC03 /* ContextBuilder.swift in Sources */,

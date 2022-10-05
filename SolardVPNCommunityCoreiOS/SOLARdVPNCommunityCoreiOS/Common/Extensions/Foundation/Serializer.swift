@@ -68,3 +68,9 @@ extension Encodable {
         return Serializer.toData(from: self)
     }
 }
+
+extension Data {
+    var string: String {
+        String(decoding: self, as: UTF8.self)
+    }
+}

@@ -9,16 +9,33 @@ import Vapor
 import Combine
 
 enum TunnelRouteEvent: String {
-    case alreadyConnected
-    case subscriptionCanceled
+    case alreadyConnected = "Already Connected"
+    case alreadyDisconnected = "Already Disconnected"
+    
+    var responseStatus: HTTPResponseStatus {
+        switch self {
+        case .alreadyConnected:
+            return .custom(code: 500, reasonPhrase: self.rawValue)
+        case .alreadyDisconnected:
+            return .custom(code: 200, reasonPhrase: self.rawValue)
+        }
+    }
+    
+    var response: Response {
+        Response(status: responseStatus)
+    }
 }
+
+private struct Constants {
+    let path: PathComponent = "connection"
+    let connectionType = "tunnelStatus"
+}
+private let constants = Constants()
 
 class TunnelRouteCollection: RouteCollection {
     private let model: ConnectionModel
     private var cancellables = Set<AnyCancellable>()
     
-    // Connection Status
-    @Published private(set) var isConnected: Bool = false
     private weak var delegate: WebSocketDelegate?
     
     init(model: ConnectionModel, delegate: WebSocketDelegate?) {
@@ -26,30 +43,31 @@ class TunnelRouteCollection: RouteCollection {
         self.delegate = delegate
         
         subscribeToEvents()
-        model.setInitData()
     }
     
     func boot(routes: RoutesBuilder) throws {
-        routes.post("connection", use: createNewSession)
-        routes.delete("connection", use: startDeactivationOfActiveTunnel)
+        routes.post(constants.path, use: createNewSession)
+        routes.delete(constants.path, use: startDeactivationOfActiveTunnel)
     }
 }
 
 extension TunnelRouteCollection {
-#warning("TODO add result")
-    func startDeactivationOfActiveTunnel(_ req: Request) async throws -> Bool {
-        model.disconnect()
-        
-        return true
+    func startDeactivationOfActiveTunnel(_ req: Request) -> Response {
+        let status = model.disconnect() ? .ok : TunnelRouteEvent.alreadyDisconnected.responseStatus
+        return Response(status: status)
     }
     
-#warning("TODO add result & pass node")
-    func createNewSession(_ req: Request) async throws -> Bool {
-        if isConnected {
-            return true // && add status TunnelRouteEvent
+    func createNewSession(_ req: Request) throws -> Response {
+        do {
+            let body = try req.content.decode(PostConnectionRequest.self)
+            let address = body.nodeAddress
+            
+            let status = model.connect(to: address) ? .accepted : TunnelRouteEvent.alreadyConnected.responseStatus
+            
+            return Response(status: status)
+        } catch {
+            return Response(status: .badRequest)
         }
-        model.connect()
-        return true
     }
 }
 
@@ -66,8 +84,6 @@ extension TunnelRouteCollection {
                     self.send(error: error)
                 case let .warning(warning):
                     self.send(warning: warning)
-                case let .info(text):
-                    self.send(info: text)
                 case let .updateTunnelActivity(isActive):
                     self.updateConnection(isConnected: isActive)
                 }
@@ -79,24 +95,24 @@ extension TunnelRouteCollection {
 // MARK: - Handle events
     
 extension TunnelRouteCollection {
-    private func send(error: Error) {
-#warning("TODO: send json with error")
-        delegate?.send(event: error.localizedDescription)
+    private func send(error: SingleInnerError) {
+        let data = error.toData()?.string ?? error.error.message
+        delegate?.send(event: data)
     }
     
-    private func send(warning: Error) {
-#warning("TODO: send json with warning")
-        delegate?.send(event: warning.localizedDescription)
-    }
-    
-    private func send(info: String) {
-#warning("TODO: send json with info")
-        delegate?.send(event: info)
+    private func send(warning: SingleInnerError) {
+        let data = warning.toData()?.string ?? warning.error.message
+        delegate?.send(event: data)
     }
     
     private func updateConnection(isConnected: Bool) {
-#warning("TODO: send json with isConnected")
-        self.isConnected = isConnected
-        delegate?.send(event: "isConnected \(isConnected)")
+        log.debug(isConnected)
+        let event = InfoEvent(
+            type: constants.connectionType,
+            value: isConnected ? "connected" : "disconnected"
+        )
+        if let dataString = event.toData()?.string {
+            delegate?.send(event: dataString)
+        }
     }
 }
