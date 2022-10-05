@@ -14,6 +14,7 @@ struct WalletRouteCollection: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         routes.get("wallet", use: getWallet)
         routes.put("wallet", use: putWallet)
+        routes.post("wallet", use: postWallet)
     }
 }
 
@@ -58,6 +59,28 @@ extension WalletRouteCollection {
                     case let .success(wallet):
                         Encoder.encode(model: wallet, continuation: continuation)
                     }
+                }
+            }
+        })
+    }
+    
+    func postWallet(_ req: Request) async throws -> String {
+        context.resetWalletContext()
+        
+        let address = context.walletStorage.walletAddress
+        
+        guard let mnemonic = context.securityService.loadMnemonics(for: address) else {
+            throw Abort(.init(statusCode: 500), reason: "Failed to liad mnemonic")
+        }
+        
+        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            getWallet() { result in
+                switch result {
+                case let .failure(error):
+                    continuation.resume(throwing: Abort(.init(statusCode: 500), reason: error.localizedDescription))
+                case let .success(wallet):
+                    let response = PostMnemonicResponse(wallet: wallet, mnemonic: mnemonic.joined(separator: " "))
+                    Encoder.encode(model: response, continuation: continuation)
                 }
             }
         })

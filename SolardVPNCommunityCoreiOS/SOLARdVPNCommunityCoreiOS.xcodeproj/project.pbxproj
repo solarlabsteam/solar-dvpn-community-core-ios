@@ -93,6 +93,7 @@
 		923C373728EC791E003CFC03 /* WalletRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C373628EC791E003CFC03 /* WalletRouteCollection.swift */; };
 		923C373A28EC79E8003CFC03 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C373928EC79E8003CFC03 /* Wallet.swift */; };
 		923C373C28ED79A2003CFC03 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C373B28ED79A2003CFC03 /* Mnemonic.swift */; };
+		923C373E28EDB109003CFC03 /* PostMnemonicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C373D28EDB109003CFC03 /* PostMnemonicResponse.swift */; };
 		92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */; };
 		92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */; };
 		92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D6B40028E19E20004CF9DF /* ViewController.swift */; };
@@ -251,6 +252,7 @@
 		923C373628EC791E003CFC03 /* WalletRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRouteCollection.swift; sourceTree = "<group>"; };
 		923C373928EC79E8003CFC03 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		923C373B28ED79A2003CFC03 /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
+		923C373D28EDB109003CFC03 /* PostMnemonicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMnemonicResponse.swift; sourceTree = "<group>"; };
 		92D6B3F928E19E20004CF9DF /* SOLARdVPNCommunityCoreiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOLARdVPNCommunityCoreiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -641,6 +643,7 @@
 			children = (
 				923C373B28ED79A2003CFC03 /* Mnemonic.swift */,
 				923C373928EC79E8003CFC03 /* Wallet.swift */,
+				923C373D28EDB109003CFC03 /* PostMnemonicResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1080,6 +1083,7 @@
 				22C3EEAA28E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift in Sources */,
 				22488AA328E72C4E00FE29C3 /* StoresWallet.swift in Sources */,
 				22C3EED128E48B52007DB01B /* TunnelStatus.swift in Sources */,
+				923C373E28EDB109003CFC03 /* PostMnemonicResponse.swift in Sources */,
 				923C373328EB150A003CFC03 /* GetContinentResponse.swift in Sources */,
 				923C372A28EAFAA5003CFC03 /* NodesServiceError.swift in Sources */,
 				225A836C28EACE6C00F66619 /* ConnectionNodeModel.swift in Sources */,
