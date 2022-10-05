@@ -40,13 +40,21 @@ struct InnerErrors: Codable {
     let errors: [InnerError]
 }
 
-struct SingleInnerError: Codable {
-    let error: InnerError
+public struct SingleInnerError: Codable {
+    public let error: InnerError
+    
+    public init(error: InnerError) {
+        self.error = error
+    }
+    
+    public init(code: Int, message: String) {
+        self.error = .init(code: code, message: message)
+    }
 }
 
 public struct InnerError: Codable {
-    let code: Int
-    let message: String
+    public let code: Int
+    public let message: String
     
     public init(code: Int, message: String) {
         self.code = code

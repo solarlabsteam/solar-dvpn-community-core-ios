@@ -22,16 +22,13 @@ private let constants = Constants()
 // MARK: - ConnectionNodeModel
 
 final class ConnectionNodeModel {
-    typealias Delegate = ConnectionModelDelegate & NodeModelDelegate
+    typealias Delegate = ConnectionModelDelegate
     typealias Context = HasConnectionInfoStorage & HasSubscriptionsService & HasTunnelManager & HasWalletService
         & HasNodesService & HasSessionsService & HasWalletStorage
     private let context: Context
     
     private var cancellables = Set<AnyCancellable>()
     private(set) weak var delegate: Delegate?
-    
-    private var subscription: SentinelWallet.Subscription?
-    private var selectedNode: Node?
     
     private var isTunnelActive: Bool {
         context.tunnelManager.isTunnelActive
@@ -40,185 +37,41 @@ final class ConnectionNodeModel {
     init(context: Context, delegate: Delegate) {
         self.context = context
         self.delegate = delegate
-        
-        loadData()
     }
 }
 
 // MARK: - Connection functions
 
 extension ConnectionNodeModel: ConnectionModelType {
-    func refreshNode() {
-        checkNodeForUpdate()
-    }
-    
     /// Should be called each time when we turn toggle to "on" state
-    func connect() {
-        guard let subscription = subscription else {
-            guard let selectedNode = selectedNode else {
-                return
-            }
-            
-            delegate?.openPlans(node: selectedNode, resubscribe: false)
-            return
-        }
-        delegate?.set(isLoading: true)
-        guard subscription.node == selectedNode?.address else {
-            loadSubscriptions(reconnect: true, address: subscription.node)
-            return
-        }
-        detectConnectionAndHandle(considerStatus: false, reconnect: true, subscription: subscription)
-    }
-}
-
-// MARK: - Connection functions
-
-extension ConnectionNodeModel {
-    func loadData() {
-        delegate?.set(isLoading: false)
-        setSelectedOrDefaultNodeInfo()
-    }
-    
-    /// Refreshes subscriptions. Should be called each time when the app leaves the background state.
-    func refreshNodeState() {
-        guard subscription != nil else { return }
-        refreshSubscriptions()
-    }
-    
-    /// Should be called each time when the view appears
-    private func checkNodeForUpdate() {
-        guard let address = context.connectionInfoStorage.lastSelectedNode() else {
-            log.error("No last selected node")
-            
-            return
-        }
-        var time: Double = 0
-        if isTunnelActive, let selectedNode = selectedNode?.address, selectedNode != address {
-            context.tunnelManager.startDeactivationOfActiveTunnel()
-            delegate?.set(isLoading: true)
-            time = 2
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + time) {
-            self.updateLocation(address: address)
-            self.refreshSubscriptions()
-        }
-    }
-}
-
-extension ConnectionNodeModel {
-    // MARK: - Default last selected node
-    private func setSelectedOrDefaultNodeInfo() {
-        var address = context.connectionInfoStorage.lastSelectedNode() ?? defaultNodeAddress
-        if address?.isEmpty == true {
-            address = defaultNodeAddress
-        }
-        if let address = address {
-            setInitialNodeInfo(address: address)
-        }
-    }
-    
-    private var defaultNodeAddress: String? {
-        let trustedNode = context.nodesService.nodes.first(where: { $0.isTrusted })
-        if let trustedNode = trustedNode {
-            context.connectionInfoStorage.set(lastSelectedNode: trustedNode.address)
-            return trustedNode.address
-        }
-        
-        let randomNode = context.nodesService.nodes.randomElement()
-        if let randomNode = randomNode {
-            context.connectionInfoStorage.set(lastSelectedNode: randomNode.address)
-        }
-        
-        return randomNode?.address
-    }
-    
-    private func setInitialNodeInfo(address: String) {
-        updateLocation(address: address)
-        
-        loadSubscriptions(address: address)
-    }
-    
-    // MARK: - Subscriprion
-    
-    /// Returns false if no quota
-    private func checkQuotaAndSubscription(hasQuota: Bool) -> Bool {
-        guard hasQuota, subscription?.isActive ?? false else {
-            guard let selectedNode = selectedNode else {
-                return false
-            }
-            
-            delegate?.openPlans(node: selectedNode, resubscribe: false)
-            delegate?.set(isLoading: false)
+    func connect(to node: String) -> Bool {
+        if isTunnelActive {
             return false
         }
-        
+        loadSubscriptions(address: node)
         return true
     }
-    
-    private func refreshSubscriptions() {
-        delegate?.set(isLoading: false)
+}
+
+extension ConnectionNodeModel {
+    private func loadSubscriptions(address: String) {
+        delegate?.set(isLoading: true)
         
-        guard let selectedAddress = context.connectionInfoStorage.lastSelectedNode() else {
-            handleConnection(reconnect: false)
-            return
-        }
-        loadSubscriptions(address: selectedAddress)
-    }
-    
-    private func loadSubscriptions(reconnect: Bool = false, address: String) {
         context.subscriptionsService.loadActiveSubscriptions { [weak self] result in
             switch result {
             case let .success(subscriptions):
                 guard let subscription = subscriptions.last(where: { $0.node == address }) else {
-                    self?.handleConnection(reconnect: false)
+                    self?.delegate?.show(error: ConnectionModelError.noSubscription.body)
                     return
                 }
                 
-                self?.subscription = subscription
-                self?.handleConnection(reconnect: false)
+                self?.detectConnectionAndHandle(connect: true, subscription: subscription)
                 
             case let .failure(error):
                 log.error(error)
-                self?.delegate?.show(error: error)
+                self?.delegate?.show(error: .init(code: 500, message: error.localizedDescription))
             }
         }
-    }
-    
-    private func handleConnection(reconnect: Bool) {
-        guard let subscription = subscription else {
-            if context.tunnelManager.startDeactivationOfActiveTunnel() != true {
-                delegate?.set(isLoading: false)
-            }
-            return
-        }
-        
-        if reconnect {
-            detectConnectionAndHandle(reconnect: reconnect, subscription: subscription)
-        } else {
-            update(subscriptionInfo: subscription, askForResubscription: false)
-        }
-    }
-    
-    private func update(
-        subscriptionInfo: SentinelWallet.Subscription,
-        askForResubscription: Bool = true
-    ) {
-        context.subscriptionsService.queryQuota(for: subscriptionInfo.id) { [weak self] result in
-            guard let self = self else { return }
-
-            switch result {
-            case .failure(let error):
-                self.delegate?.show(error: error)
-
-            case .success(let quota):
-                guard self.update(quota: quota, askForResubscription: askForResubscription) else {
-                    return
-                }
-                self.delegate?.set(isLoading: false)
-            }
-        }
-
-        updateLocation(address: subscriptionInfo.node)
     }
 
     private func connect(to subscription: SentinelWallet.Subscription) {
@@ -227,17 +80,17 @@ extension ConnectionNodeModel {
 
             switch result {
             case .failure(let error):
-                self.delegate?.show(error: error)
+                self.delegate?.show(error: .init(code: 500, message: error.localizedDescription))
 
             case .success(let quota):
-                guard self.update(quota: quota, askForResubscription: true) else {
+                guard self.update(quota: quota, askForResubscription: true, subscription: subscription) else {
                     return
                 }
                 
                 self.context.nodesService.getNode(by: subscription.node) { [weak self] result in
                     switch result {
                     case .failure(let error):
-                        self?.delegate?.show(error: error)
+                        self?.delegate?.show(error: .init(code: 500, message: error.localizedDescription))
                     case .success(let node):
                         self?.createNewSession(subscription: subscription, nodeURL: node.remoteURL)
                     }
@@ -246,27 +99,24 @@ extension ConnectionNodeModel {
         }
     }
     
-    private func update(quota: Quota, askForResubscription: Bool) -> Bool {
+    private func update(quota: Quota, askForResubscription: Bool, subscription: SentinelWallet.Subscription) -> Bool {
         let initialBandwidth = quota.allocated
         let bandwidthConsumed = quota.consumed
         
         let bandwidthLeft = (Int64(initialBandwidth) ?? 0) - (Int64(bandwidthConsumed) ?? 0)
         
-        return askForResubscription ? checkQuotaAndSubscription(hasQuota: bandwidthLeft != 0) : true
+        return askForResubscription ? checkQuotaAndSubscription(hasQuota: bandwidthLeft != 0, subscription: subscription) : true
     }
     
-    private func updateLocation(address: String) {
-        context.nodesService.getNode(by: address) { [weak self] result in
-            switch result {
-            case let .failure(error):
-                guard self?.subscription != nil else { return }
-                log.error(error)
-                self?.delegate?.show(error: ConnectionModelError.nodeIsOffline)
-            case let .success(node):
-                self?.selectedNode = node
-            }
-        }
-    }
+    private func checkQuotaAndSubscription(hasQuota: Bool, subscription: SentinelWallet.Subscription) -> Bool {
+          guard hasQuota, subscription.isActive else {
+              delegate?.show(error: ConnectionModelError.noQuotaLeft.body)
+              delegate?.set(isLoading: false)
+              return false
+          }
+          
+          return true
+      }
     
     private func createNewSession(subscription: SentinelWallet.Subscription, nodeURL: String) {
         context.walletService.fetchBalance { [weak self] result in
@@ -281,7 +131,7 @@ extension ConnectionNodeModel {
                     .contains(
                         where: { $0.denom == constants.denom && Int($0.amount) ?? 0 >= self.context.walletService.fee }
                     ) else {
-                    self.delegate?.show(warning: WalletServiceError.notEnoughTokens)
+                    self.delegate?.show(warning: WalletServiceError.notEnoughTokens.body)
                     self.delegate?.set(isLoading: false)
                     return
                 }
@@ -298,38 +148,38 @@ extension ConnectionNodeModel {
         context.sessionsService.startSession(on: subscription.id, node: nodeAddress) { [weak self] result in
             switch result {
             case .failure(let error):
-                self?.delegate?.show(error: error)
+                self?.delegate?.show(error: .init(code: 500, message: error.localizedDescription))
             case .success(let id):
                 self?.fetchConnectionData(remoteURLString: nodeURL, id: id)
+                self?.context.connectionInfoStorage.set(lastSelectedNode: subscription.node)
             }
         }
     }
     
     private func detectConnectionAndHandle(
         considerStatus: Bool = true,
-        reconnect: Bool,
+        connect: Bool,
         subscription: SentinelWallet.Subscription
     ) {
-        detectConnection { [weak self] result in
+        detectConnection(node: subscription.node) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .failure(let error):
                 log.error(error)
-                if reconnect {
+                if connect {
                     self.connect(to: subscription)
                 }
                 
             case let .success((isTunnelActive, isSessionActive)):
                 switch (isTunnelActive, isSessionActive) {
                 case (true, true):
-                    self.update(subscriptionInfo: subscription)
+                    self.delegate?.show(error: ConnectionModelError.tunnelIsAlreadyActive.body)
                 case (false, true):
                     if let tunnel = self.context.tunnelManager.lastTunnel {
                         self.context.tunnelManager.startActivation(of: tunnel)
-                        self.update(subscriptionInfo: subscription)
                     } else {
-                        if reconnect {
+                        if connect {
                             self.connect(to: subscription)
                         } else {
                             self.delegate?.set(isLoading: false)
@@ -337,7 +187,6 @@ extension ConnectionNodeModel {
                     }
                 case (true, false), (false, false):
                     self.connect(to: subscription)
-                    self.updateLocation(address: subscription.node)
                 }
             }
         }
@@ -346,6 +195,7 @@ extension ConnectionNodeModel {
     /// Checks if tunnel and session are active
     private func detectConnection(
         considerStatus: Bool = true,
+        node: String,
         completion: @escaping (Result<(Bool, Bool), Error>) -> Void
     ) {
         var isTunnelActive: Bool
@@ -360,8 +210,7 @@ extension ConnectionNodeModel {
             isTunnelActive = false
         }
         
-        guard let sessionId = context.connectionInfoStorage.lastSessionId(),
-              let node = context.connectionInfoStorage.lastSelectedNode() else {
+        guard let sessionId = context.connectionInfoStorage.lastSessionId() else {
             completion(.success((isTunnelActive, false)))
             return
         }
@@ -391,12 +240,7 @@ extension ConnectionNodeModel {
         let sessionIdData = Data(bytes: &int, count: 8)
 
         guard let signature = context.walletService.generateSignature(for: sessionIdData) else {
-            delegate?.show(error: ConnectionModelError.signatureGenerationFailed)
-            return
-        }
-        
-        guard let selectedNode = self.selectedNode else {
-            delegate?.show(error: ConnectionModelError.noSelectedNode)
+            delegate?.show(error: ConnectionModelError.signatureGenerationFailed.body)
             return
         }
 
@@ -409,16 +253,7 @@ extension ConnectionNodeModel {
             guard let self = self else { return }
             switch result {
             case let .failure(error):
-                switch error {
-                case .noQuota:
-                    self.delegate?.openPlans(node: selectedNode, resubscribe: true)
-                    self.delegate?.set(isLoading: false)
-                case .nodeMisconfigured:
-                    self.delegate?.suggestUnsubscribe(from: selectedNode)
-                    self.delegate?.set(isLoading: false)
-                default:
-                    self.delegate?.show(error: error)
-                }
+                self.delegate?.show(error: .init(code: 500, message: error.localizedDescription))
             case let .success((data, wgKey)):
                 self.context.connectionInfoStorage.set(sessionId: Int(id))
                 self.context.tunnelManager.createNewProfile(

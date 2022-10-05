@@ -13,10 +13,8 @@ import GRPC
 // MARK: - ConnectionModelEvent
 
 enum ConnectionModelEvent {
-    case error(Error)
-    case warning(Error)
-    case info(String)
-    
+    case error(SingleInnerError)
+    case warning(SingleInnerError)
     case updateTunnelActivity(isActive: Bool)
 }
 
@@ -59,72 +57,24 @@ extension ConnectionModel: ConnectionModelDelegate {
     }
 }
 
-// MARK: - NodeModelDelegate
-
-extension ConnectionModel: NodeModelDelegate {
-    func suggestUnsubscribe(from node: Node) {
-        eventSubject.send(.error(SessionsServiceError.nodeMisconfigured))
-    }
-    
-    func openPlans(node: Node, resubscribe: Bool) {
-        eventSubject.send(.error(resubscribe ? ConnectionModelError.noQuotaLeft : .noSubscription))
-    }
-}
-
 // MARK: - Connection functions
 
 extension ConnectionModel {
-    func setInitData() {
-        updateConnectionType(forceUpdate: true, disconnect: false)
-    }
-    
-    func refresh() {
-        updateConnectionType()
-    }
-    
     /// Should be called each time when we turn toggle to "on" state
-    func connect() {
-        delegate?.connect()
+    func connect(to node: String) -> Bool {
+        delegate?.connect(to: node) ?? false
     }
     
     /// Should be called each time when we turn toggle to "off" state
-    func disconnect() {
-        guard let tunnel = context.tunnelManager.lastTunnel, tunnel.status != .disconnected else {
-            stopLoading()
-            return
-        }
-        
-        context.tunnelManager.startDeactivation(of: tunnel)
-    }
-    
-    func cancelSubscriptions(for nodeAddress: String) {
-        context.subscriptionsService.loadActiveSubscriptions { [weak self] result in
-            switch result {
-            case let .success(subscriptions):
-                let subscriptionsToCancel = subscriptions.filter { $0.node == nodeAddress }.map { $0.id }
-                
-                self?.context.subscriptionsService.cancel(
-                    subscriptions: subscriptionsToCancel,
-                    with: nodeAddress
-                ) { [weak self] result in
-                    switch result {
-                    case let .failure(error):
-                        self?.show(error: error)
-                    case .success:
-                        self?.handleCancellation(address: nodeAddress)
-                    }
-                }
-            case let .failure(error):
-                self?.show(error: error)
-            }
-        }
+    func disconnect() -> Bool {
+        context.tunnelManager.startDeactivationOfActiveTunnel()
     }
 }
 
 // MARK: - Events
 
 extension ConnectionModel {
-    internal func show(error: Error) {
+    internal func show(error: SingleInnerError) {
         log.error(error)
         stopLoading()
         
@@ -132,36 +82,12 @@ extension ConnectionModel {
         eventSubject.send(.error(error))
     }
     
-    func show(warning: Error) {
+    func show(warning: SingleInnerError) {
         eventSubject.send(.warning(warning))
     }
     
     private func stopLoading() {
         eventSubject.send(.updateTunnelActivity(isActive: isTunnelActive))
-    }
-    
-    private func handleCancellation(address: String) {
-        eventSubject.send(.info(TunnelRouteEvent.subscriptionCanceled.rawValue))
-        
-        stopLoading()
-        delegate?.refreshNode()
-    }
-}
-
-// MARK: - Connection type
-
-extension ConnectionModel {
-    func updateConnectionType(forceUpdate: Bool = false, disconnect: Bool = true) {
-        guard forceUpdate else {
-            delegate?.refreshNode()
-            return
-        }
-
-        if disconnect {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.disconnect()
-            }
-        }
     }
 }
 
@@ -174,7 +100,7 @@ extension ConnectionModel {
                 if let statusError = error as? GRPC.GRPCStatus, statusError.code == .notFound {
                     return
                 }
-                self?.show(error: error)
+                self?.show(error: .init(code: 500, message: error.localizedDescription))
             }
         }
 
@@ -183,7 +109,7 @@ extension ConnectionModel {
             case .success(let info):
                 log.debug(info)
             case .failure(let error):
-                self?.show(error: error)
+                self?.show(error: .init(code: 500, message: error.localizedDescription))
             }
         }
     }
@@ -203,7 +129,7 @@ extension ConnectionModel: TunnelManagerDelegate {
     func handleTunnelUpdatingStatus() { }
 
     func handleError(_ error: Error) {
-        show(error: error)
+        show(error: .init(code: 500, message: error.localizedDescription))
     }
 
     func handleTunnelReconnection() { }
@@ -215,7 +141,7 @@ extension ConnectionModel: TunnelManagerDelegate {
 
 extension ConnectionModel: TunnelsServiceStatusDelegate {
     func activationAttemptFailed(for tunnel: TunnelContainer, with error: TunnelActivationError) {
-        show(error: error)
+        show(error: .init(code: 500, message: error.localizedDescription))
     }
 
     func activationAttemptSucceeded(for tunnel: TunnelContainer) {
@@ -227,7 +153,7 @@ extension ConnectionModel: TunnelsServiceStatusDelegate {
     }
 
     func activationFailed(for tunnel: TunnelContainer, with error: TunnelActivationError) {
-        show(error: error)
+        show(error: .init(code: 500, message: error.localizedDescription))
     }
 
     func activationSucceeded(for tunnel: TunnelContainer) {

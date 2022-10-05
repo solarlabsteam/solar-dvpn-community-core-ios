@@ -8,18 +8,12 @@
 import Foundation
 
 protocol ConnectionModelDelegate: AnyObject {
-    func show(error: Error)
-    func show(warning: Error)
+    func show(error: SingleInnerError)
+    func show(warning: SingleInnerError)
     
     func set(isLoading: Bool)
 }
 
 protocol ConnectionModelType: AnyObject {
-    func connect()
-    func refreshNode()
-}
-
-protocol NodeModelDelegate: AnyObject {
-    func openPlans(node: Node, resubscribe: Bool)
-    func suggestUnsubscribe(from node: Node)
+    func connect(to node: String) -> Bool 
 }

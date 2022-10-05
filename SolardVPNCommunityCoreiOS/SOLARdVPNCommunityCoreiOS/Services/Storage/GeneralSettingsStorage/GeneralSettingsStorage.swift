@@ -19,8 +19,6 @@ private enum Keys: String, CaseIterable {
 
 final class GeneralSettingsStorage {
     private let settingsStorageStrategy: SettingsStorageStrategyType
-    
-    @Published private(set) var _preselectedNode: String?
 
     init(settingsStorageStrategy: SettingsStorageStrategyType = UserDefaultsStorageStrategy()) {
         self.settingsStorageStrategy = settingsStorageStrategy
