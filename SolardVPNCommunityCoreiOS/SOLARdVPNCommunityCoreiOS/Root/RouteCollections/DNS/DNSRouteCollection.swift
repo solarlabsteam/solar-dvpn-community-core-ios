@@ -17,7 +17,8 @@ struct DNSRouteCollection: RouteCollection {
     let context: HasDNSServersStorage & HasTunnelManager
     
     func boot(routes: RoutesBuilder) throws {
-        routes.get(constants.path, use: getAvailableDNS)
+        routes.get(constants.path, "list", use: getAvailableDNS)
+        routes.get(constants.path, "current", use: getSelectedDNS)
         routes.put(constants.path, use: putDNS)
     }
 }
@@ -25,8 +26,17 @@ struct DNSRouteCollection: RouteCollection {
 extension DNSRouteCollection {
     func getAvailableDNS(_ req: Request) async throws -> String {
         try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
-            let servers = DNSServerType.allCases.map { AvailableDNSServer(name: $0.rawValue, addresses: $0.address) }
+            let servers = DNSServerType.allCases.map(AvailableDNSServer.init(from:))
             let body = PostDNSResponse(servers: servers)
+            
+            Encoder.encode(model: body, continuation: continuation)
+        })
+    }
+    
+    func getSelectedDNS(_ req: Request) async throws -> String {
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            let dnsServer = context.dnsServersStorage.selectedDNS
+            let body = AvailableDNSServer(from: dnsServer)
             
             Encoder.encode(model: body, continuation: continuation)
         })
@@ -48,5 +58,3 @@ extension DNSRouteCollection {
         }
     }
 }
-
-
