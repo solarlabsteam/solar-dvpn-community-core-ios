@@ -10,7 +10,7 @@ import Foundation
 struct PostSubscribeRequest: Codable {
     let nodeAddress: String
     let amount: String
-    let denom: String
+    let currency: String
 }
 
 // MARK: - Codable implementation
@@ -19,6 +19,6 @@ extension PostSubscribeRequest {
     enum CodingKeys: String, CodingKey {
         case nodeAddress = "node_address"
         case amount
-        case denom
+        case currency
     }
 }

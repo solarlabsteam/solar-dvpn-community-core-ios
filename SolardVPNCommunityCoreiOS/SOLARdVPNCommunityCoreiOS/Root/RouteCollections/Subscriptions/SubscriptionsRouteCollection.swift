@@ -48,7 +48,7 @@ extension SubscriptionsRouteCollection {
                 
                 context.subscriptionsService.checkBalanceAndSubscribe(
                     to: node.nodeAddress,
-                    deposit: CoinToken(denom: node.denom, amount: node.amount)
+                    deposit: CoinToken(denom: node.currency, amount: node.amount)
                 ) { result in
                     switch result {
                     case let .failure(error):
