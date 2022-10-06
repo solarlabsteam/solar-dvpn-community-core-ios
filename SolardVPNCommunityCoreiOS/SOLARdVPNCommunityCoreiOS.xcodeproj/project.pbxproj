@@ -41,6 +41,8 @@
 		225A83B028EED6F800F66619 /* DNSRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83AF28EED6F800F66619 /* DNSRouteCollection.swift */; };
 		225A83B228EED93C00F66619 /* PostDNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83B128EED93C00F66619 /* PostDNSRequest.swift */; };
 		225A83B428EED95500F66619 /* PostDNSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83B328EED95500F66619 /* PostDNSResponse.swift */; };
+		225A83B728EEF25D00F66619 /* StorageRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83B628EEF25D00F66619 /* StorageRouteCollection.swift */; };
+		225A83BA28EEF30E00F66619 /* LocalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83B928EEF30E00F66619 /* LocalValue.swift */; };
 		22C3EE9028E4638E007DB01B /* WireGuardNetworkExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22C3EE9728E463D6007DB01B /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9628E463D6007DB01B /* WireGuardKit */; };
 		22C3EE9A28E464A1007DB01B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9928E464A1007DB01B /* Alamofire */; };
@@ -213,6 +215,8 @@
 		225A83AF28EED6F800F66619 /* DNSRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSRouteCollection.swift; sourceTree = "<group>"; };
 		225A83B128EED93C00F66619 /* PostDNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDNSRequest.swift; sourceTree = "<group>"; };
 		225A83B328EED95500F66619 /* PostDNSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDNSResponse.swift; sourceTree = "<group>"; };
+		225A83B628EEF25D00F66619 /* StorageRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRouteCollection.swift; sourceTree = "<group>"; };
+		225A83B928EEF30E00F66619 /* LocalValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalValue.swift; sourceTree = "<group>"; };
 		22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WireGuardNetworkExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C3EE9B28E467E4007DB01B /* SOLARdVPNCommunityCoreiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SOLARdVPNCommunityCoreiOS.entitlements; sourceTree = "<group>"; };
 		22C3EE9D28E4733C007DB01B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -467,6 +471,15 @@
 			path = Server;
 			sourceTree = "<group>";
 		};
+		225A83B528EEF24300F66619 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				225A83B628EEF25D00F66619 /* StorageRouteCollection.swift */,
+				225A83B928EEF30E00F66619 /* LocalValue.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		22C3EE9C28E4733C007DB01B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +647,7 @@
 				225A83AD28EED6AE00F66619 /* DNS */,
 				923C372428E72FF0003CFC03 /* Nodes */,
 				923C3B9428EEF058003CFC03 /* Subscriptions */,
+				225A83B528EEF24300F66619 /* Storage */,
 				225A83A428EC297500F66619 /* Tunnel */,
 				923C373528EC7904003CFC03 /* Wallet */,
 			);
@@ -1111,9 +1125,11 @@
 				225A839D28EAE54400F66619 /* SecurityService.swift in Sources */,
 				22C3EEE628E48D9A007DB01B /* TunnelConfiguration+Ext.swift in Sources */,
 				923C373728EC791E003CFC03 /* WalletRouteCollection.swift in Sources */,
+				225A83B728EEF25D00F66619 /* StorageRouteCollection.swift in Sources */,
 				22C3EEE828E48D9A007DB01B /* Serializer.swift in Sources */,
 				22C3EEE728E48D9A007DB01B /* NEVPNStatus+Ext.swift in Sources */,
 				92D6B41428E1E133004CF9DF /* DVPNServer.swift in Sources */,
+				225A83BA28EEF30E00F66619 /* LocalValue.swift in Sources */,
 				923C371828E5D20D003CFC03 /* GetNodesRequest.swift in Sources */,
 				92D6B47428E48F64004CF9DF /* Continent.swift in Sources */,
 				92D6B47128E47E71004CF9DF /* NodesServiceType.swift in Sources */,

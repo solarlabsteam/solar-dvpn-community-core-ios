@@ -30,6 +30,7 @@ extension DVPNServer {
                 try api.register(collection: WalletRouteCollection(context: context))
                 try api.register(collection: DNSRouteCollection(context: context))
                 try api.register(collection: SubscriptionsRouteCollection(context: context))
+                try api.register(collection: StorageRouteCollection(context: context))
                 try api.register(
                     collection:
                         TunnelRouteCollection(

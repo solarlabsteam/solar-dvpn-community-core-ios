@@ -35,7 +35,9 @@ final class ContextBuilder {
         let tunnelManager = TunnelManager(storage: generalSettingsStorage)
         
         return CommonContext(
-            storage: generalSettingsStorage,
+            generalSettingStorage: generalSettingsStorage,
+            commonStorage: UserDefaultsStorageStrategy(),
+            safeStorage: KeychainStorageStrategy(serviceKey: "CommunityCoreSafeStorage"),
             nodesProvider: nodesProvider,
             securityService: securityService,
             walletService: walletService,

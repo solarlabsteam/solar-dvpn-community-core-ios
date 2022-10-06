@@ -12,8 +12,10 @@ import SOLARAPI
 protocol NoContext {}
 
 final class CommonContext {
-    typealias Storage = StoresConnectInfo & StoresWallet & StoresDNSServers
-    let storage: Storage
+    typealias GeneralSettingStorage = StoresConnectInfo & StoresWallet & StoresDNSServers
+    let generalSettingStorage: GeneralSettingStorage
+    let commonStorage: SettingsStorageStrategyType
+    let safeStorage: SettingsStorageStrategyType
     
     // Providers
     let nodesProvider: SOLARAPI.NodesProviderType
@@ -29,7 +31,9 @@ final class CommonContext {
     let tunnelManager: TunnelManagerType
     
     init(
-        storage: Storage,
+        generalSettingStorage: GeneralSettingStorage,
+        commonStorage: SettingsStorageStrategyType,
+        safeStorage: SettingsStorageStrategyType,
         nodesProvider: SOLARAPI.NodesProviderType,
         securityService: SecurityService,
         walletService: WalletService,
@@ -38,7 +42,9 @@ final class CommonContext {
         sessionsService: SessionsServiceType,
         tunnelManager: TunnelManagerType
     ) {
-        self.storage = storage
+        self.generalSettingStorage = generalSettingStorage
+        self.commonStorage = commonStorage
+        self.safeStorage = safeStorage
         self.nodesProvider = nodesProvider
         self.securityService = securityService
         self.walletService = walletService
@@ -58,7 +64,7 @@ protocol HasWalletService {
 
 extension CommonContext: HasWalletService {
     func updateWalletContext() {
-        let walletAddress = storage.walletAddress
+        let walletAddress = generalSettingStorage.walletAddress
         guard !walletAddress.isEmpty else { return }
         walletService.manage(address: walletAddress)
     }
@@ -70,7 +76,7 @@ extension CommonContext: HasWalletService {
             fatalError("failed to generate wallet due to \(error), terminate")
         case .success(let address):
             saveMnemonicsIfNeeded(for: address, mnemonics: mnemonics)
-            storage.set(wallet: address)
+            generalSettingStorage.set(wallet: address)
             updateWalletContext()
         }
     }
@@ -106,20 +112,26 @@ extension CommonContext: HasSecurityService {}
 protocol HasConnectionInfoStorage { var connectionInfoStorage: StoresConnectInfo { get } }
 extension CommonContext: HasConnectionInfoStorage {
     var connectionInfoStorage: StoresConnectInfo {
-        storage as StoresConnectInfo
+        generalSettingStorage as StoresConnectInfo
     }
 }
 
 protocol HasWalletStorage { var walletStorage: StoresWallet { get } }
 extension CommonContext: HasWalletStorage {
     var walletStorage: StoresWallet {
-        storage as StoresWallet
+        generalSettingStorage as StoresWallet
     }
 }
 
 protocol HasDNSServersStorage { var dnsServersStorage: StoresDNSServers { get } }
 extension CommonContext: HasDNSServersStorage {
     var dnsServersStorage: StoresDNSServers {
-        storage as StoresDNSServers
+        generalSettingStorage as StoresDNSServers
     }
 }
+
+protocol HasSafeStorage { var safeStorage: SettingsStorageStrategyType { get } }
+extension CommonContext: HasSafeStorage {}
+
+protocol HasCommonStorage { var commonStorage: SettingsStorageStrategyType { get } }
+extension CommonContext: HasCommonStorage {}
