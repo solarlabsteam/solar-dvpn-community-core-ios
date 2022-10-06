@@ -114,11 +114,11 @@ extension TunnelManager: TunnelManagerType {
     }
 
     public func update(with server: String) {
-        tunnelModel.interfaceModel[.dns] = server
-
-        guard tunnelsService?.tunnels.last != nil else {
+        guard isTunnelActive else {
             return
         }
+        
+        tunnelModel.interfaceModel[.dns] = server
         upsertTunnel(startActivation: false)
     }
     

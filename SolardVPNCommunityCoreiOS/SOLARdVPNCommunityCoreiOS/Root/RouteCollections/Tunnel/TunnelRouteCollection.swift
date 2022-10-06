@@ -106,7 +106,6 @@ extension TunnelRouteCollection {
     }
     
     private func updateConnection(isConnected: Bool) {
-        log.debug(isConnected)
         let event = InfoEvent(
             type: constants.connectionType,
             value: isConnected ? "connected" : "disconnected"

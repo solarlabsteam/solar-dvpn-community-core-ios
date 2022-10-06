@@ -38,6 +38,9 @@
 		225A83A328EB14B200F66619 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EF0028E6FD95007DB01B /* PacketTunnelProvider.swift */; };
 		225A83A628EC81E500F66619 /* WebSocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83A528EC81E500F66619 /* WebSocketDelegate.swift */; };
 		225A83AC28EDB3C100F66619 /* InfoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83AB28EDB3C100F66619 /* InfoEvent.swift */; };
+		225A83B028EED6F800F66619 /* DNSRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83AF28EED6F800F66619 /* DNSRouteCollection.swift */; };
+		225A83B228EED93C00F66619 /* PostDNSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83B128EED93C00F66619 /* PostDNSRequest.swift */; };
+		225A83B428EED95500F66619 /* PostDNSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83B328EED95500F66619 /* PostDNSResponse.swift */; };
 		22C3EE9028E4638E007DB01B /* WireGuardNetworkExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22C3EE9728E463D6007DB01B /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9628E463D6007DB01B /* WireGuardKit */; };
 		22C3EE9A28E464A1007DB01B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9928E464A1007DB01B /* Alamofire */; };
@@ -206,6 +209,9 @@
 		225A83A128EB06BF00F66619 /* NodesProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesProviderType.swift; sourceTree = "<group>"; };
 		225A83A528EC81E500F66619 /* WebSocketDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketDelegate.swift; sourceTree = "<group>"; };
 		225A83AB28EDB3C100F66619 /* InfoEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoEvent.swift; sourceTree = "<group>"; };
+		225A83AF28EED6F800F66619 /* DNSRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSRouteCollection.swift; sourceTree = "<group>"; };
+		225A83B128EED93C00F66619 /* PostDNSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDNSRequest.swift; sourceTree = "<group>"; };
+		225A83B328EED95500F66619 /* PostDNSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDNSResponse.swift; sourceTree = "<group>"; };
 		22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WireGuardNetworkExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C3EE9B28E467E4007DB01B /* SOLARdVPNCommunityCoreiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SOLARdVPNCommunityCoreiOS.entitlements; sourceTree = "<group>"; };
 		22C3EE9D28E4733C007DB01B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -440,6 +446,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		225A83AD28EED6AE00F66619 /* DNS */ = {
+			isa = PBXGroup;
+			children = (
+				225A83AF28EED6F800F66619 /* DNSRouteCollection.swift */,
+				225A83B128EED93C00F66619 /* PostDNSRequest.swift */,
+				225A83B328EED95500F66619 /* PostDNSResponse.swift */,
+			);
+			path = DNS;
+			sourceTree = "<group>";
+		};
+		225A83AE28EED6C600F66619 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				225A83A528EC81E500F66619 /* WebSocketDelegate.swift */,
+				92D6B41328E1E133004CF9DF /* DVPNServer.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
 		22C3EE9C28E4733C007DB01B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,11 +587,10 @@
 			isa = PBXGroup;
 			children = (
 				923C372328E72FDA003CFC03 /* RouteCollections */,
+				225A83AE28EED6C600F66619 /* Server */,
 				92D6B3FC28E19E20004CF9DF /* AppDelegate.swift */,
-				92D6B41328E1E133004CF9DF /* DVPNServer.swift */,
 				92D6B3FE28E19E20004CF9DF /* SceneDelegate.swift */,
 				92D6B40028E19E20004CF9DF /* ViewController.swift */,
-				225A83A528EC81E500F66619 /* WebSocketDelegate.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -605,9 +629,10 @@
 		923C372328E72FDA003CFC03 /* RouteCollections */ = {
 			isa = PBXGroup;
 			children = (
-				923C373528EC7904003CFC03 /* Wallet */,
+				225A83AD28EED6AE00F66619 /* DNS */,
 				923C372428E72FF0003CFC03 /* Nodes */,
 				225A83A428EC297500F66619 /* Tunnel */,
+				923C373528EC7904003CFC03 /* Wallet */,
 			);
 			path = RouteCollections;
 			sourceTree = "<group>";
@@ -1040,6 +1065,7 @@
 				923C373128EB0CB2003CFC03 /* CountryExtra.swift in Sources */,
 				92D6B3FD28E19E20004CF9DF /* AppDelegate.swift in Sources */,
 				923C371C28E5DA05003CFC03 /* OrderType.swift in Sources */,
+				225A83B228EED93C00F66619 /* PostDNSRequest.swift in Sources */,
 				225A838C28EAE01400F66619 /* SubscriptionsService.swift in Sources */,
 				92D6B46F28E47E2E004CF9DF /* NodesService.swift in Sources */,
 				22C3EEA728E4733C007DB01B /* Config.swift in Sources */,
@@ -1064,6 +1090,7 @@
 				225A838B28EAE01400F66619 /* SubscriptionsServiceType.swift in Sources */,
 				22C3EEAD28E4733C007DB01B /* ConfigurationParseError.swift in Sources */,
 				225A83A628EC81E500F66619 /* WebSocketDelegate.swift in Sources */,
+				225A83B428EED95500F66619 /* PostDNSResponse.swift in Sources */,
 				22C3EED228E48B52007DB01B /* TunnelContainer.swift in Sources */,
 				22488A9A28E729E600FE29C3 /* GeneralSettingsStorage.swift in Sources */,
 				22C3EEFB28E48F95007DB01B /* NotificationToken.swift in Sources */,
@@ -1098,6 +1125,7 @@
 				923C373E28EDB109003CFC03 /* PostMnemonicResponse.swift in Sources */,
 				923C373328EB150A003CFC03 /* GetContinentResponse.swift in Sources */,
 				923C372A28EAFAA5003CFC03 /* NodesServiceError.swift in Sources */,
+				225A83B028EED6F800F66619 /* DNSRouteCollection.swift in Sources */,
 				225A836C28EACE6C00F66619 /* ConnectionNodeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

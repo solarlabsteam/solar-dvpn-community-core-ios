@@ -116,3 +116,10 @@ extension CommonContext: HasWalletStorage {
         storage as StoresWallet
     }
 }
+
+protocol HasDNSServersStorage { var dnsServersStorage: StoresDNSServers { get } }
+extension CommonContext: HasDNSServersStorage {
+    var dnsServersStorage: StoresDNSServers {
+        storage as StoresDNSServers
+    }
+}
