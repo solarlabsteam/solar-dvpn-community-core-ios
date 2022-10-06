@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		22488A9128E7043200FE29C3 /* String+ArrayConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3EEA428E4733C007DB01B /* String+ArrayConversion.swift */; };
 		22488A9328E726AA00FE29C3 /* TunnelRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22488A9228E726A900FE29C3 /* TunnelRouteCollection.swift */; };
-		22488A9628E7285500FE29C3 /* PostConnectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22488A9528E7285500FE29C3 /* PostConnectionRequest.swift */; };
 		22488A9A28E729E600FE29C3 /* GeneralSettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22488A9928E729E600FE29C3 /* GeneralSettingsStorage.swift */; };
 		22488AA028E72C4E00FE29C3 /* UserDefaultsStorageStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22488A9C28E72C4E00FE29C3 /* UserDefaultsStorageStrategy.swift */; };
 		22488AA128E72C4E00FE29C3 /* SettingsStorageStrategyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22488A9D28E72C4E00FE29C3 /* SettingsStorageStrategyType.swift */; };
@@ -43,6 +42,8 @@
 		225A83B428EED95500F66619 /* PostDNSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83B328EED95500F66619 /* PostDNSResponse.swift */; };
 		225A83B728EEF25D00F66619 /* StorageRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83B628EEF25D00F66619 /* StorageRouteCollection.swift */; };
 		225A83BA28EEF30E00F66619 /* LocalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83B928EEF30E00F66619 /* LocalValue.swift */; };
+		225A83BE28EF0FA700F66619 /* PostSubscribeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83BD28EF0FA700F66619 /* PostSubscribeRequest.swift */; };
+		225A83C028EF139A00F66619 /* PostConnectionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A83BF28EF139A00F66619 /* PostConnectionRequest.swift */; };
 		22C3EE9028E4638E007DB01B /* WireGuardNetworkExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		22C3EE9728E463D6007DB01B /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9628E463D6007DB01B /* WireGuardKit */; };
 		22C3EE9A28E464A1007DB01B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 22C3EE9928E464A1007DB01B /* Alamofire */; };
@@ -186,7 +187,6 @@
 
 /* Begin PBXFileReference section */
 		22488A9228E726A900FE29C3 /* TunnelRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelRouteCollection.swift; sourceTree = "<group>"; };
-		22488A9528E7285500FE29C3 /* PostConnectionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostConnectionRequest.swift; sourceTree = "<group>"; };
 		22488A9928E729E600FE29C3 /* GeneralSettingsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSettingsStorage.swift; sourceTree = "<group>"; };
 		22488A9C28E72C4E00FE29C3 /* UserDefaultsStorageStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageStrategy.swift; sourceTree = "<group>"; };
 		22488A9D28E72C4E00FE29C3 /* SettingsStorageStrategyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStorageStrategyType.swift; sourceTree = "<group>"; };
@@ -217,6 +217,8 @@
 		225A83B328EED95500F66619 /* PostDNSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDNSResponse.swift; sourceTree = "<group>"; };
 		225A83B628EEF25D00F66619 /* StorageRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRouteCollection.swift; sourceTree = "<group>"; };
 		225A83B928EEF30E00F66619 /* LocalValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalValue.swift; sourceTree = "<group>"; };
+		225A83BD28EF0FA700F66619 /* PostSubscribeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSubscribeRequest.swift; sourceTree = "<group>"; };
+		225A83BF28EF139A00F66619 /* PostConnectionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostConnectionRequest.swift; sourceTree = "<group>"; };
 		22C3EE8728E4638E007DB01B /* WireGuardNetworkExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WireGuardNetworkExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C3EE9B28E467E4007DB01B /* SOLARdVPNCommunityCoreiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SOLARdVPNCommunityCoreiOS.entitlements; sourceTree = "<group>"; };
 		22C3EE9D28E4733C007DB01B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -438,8 +440,8 @@
 			isa = PBXGroup;
 			children = (
 				225A834628EACE6C00F66619 /* Connection */,
+				225A83BF28EF139A00F66619 /* PostConnectionRequest.swift */,
 				22488A9228E726A900FE29C3 /* TunnelRouteCollection.swift */,
-				22488A9528E7285500FE29C3 /* PostConnectionRequest.swift */,
 			);
 			path = Tunnel;
 			sourceTree = "<group>";
@@ -703,6 +705,7 @@
 		923C3B9428EEF058003CFC03 /* Subscriptions */ = {
 			isa = PBXGroup;
 			children = (
+				225A83BD28EF0FA700F66619 /* PostSubscribeRequest.swift */,
 				923C3B9528EEF06D003CFC03 /* SubscriptionsRouteCollection.swift */,
 			);
 			path = Subscriptions;
@@ -1135,16 +1138,17 @@
 				92D6B47128E47E71004CF9DF /* NodesServiceType.swift in Sources */,
 				22C3EEA828E4733C007DB01B /* Keychain.swift in Sources */,
 				923C372228E72C87003CFC03 /* NodesByAddressPostBody.swift in Sources */,
+				225A83C028EF139A00F66619 /* PostConnectionRequest.swift in Sources */,
 				225A83AC28EDB3C100F66619 /* InfoEvent.swift in Sources */,
 				22C3EECE28E48B52007DB01B /* PeersModel.swift in Sources */,
 				92D6B41E28E2F64D004CF9DF /* ClientConstants.swift in Sources */,
 				923C371628E5B9DE003CFC03 /* ContextBuilder.swift in Sources */,
 				22C3EECD28E48B52007DB01B /* TunnelInterfaceModel.swift in Sources */,
 				22C3EEF628E48EBF007DB01B /* StoresDNSServers.swift in Sources */,
-				22488A9628E7285500FE29C3 /* PostConnectionRequest.swift in Sources */,
 				92D6B3FF28E19E20004CF9DF /* SceneDelegate.swift in Sources */,
 				22C3EED328E48B52007DB01B /* TunnelsServiceStatusDelegate.swift in Sources */,
 				22C3EECF28E48B52007DB01B /* TunnelSavingError.swift in Sources */,
+				225A83BE28EF0FA700F66619 /* PostSubscribeRequest.swift in Sources */,
 				22488AA228E72C4E00FE29C3 /* KeychainStorageStrategy.swift in Sources */,
 				22C3EEE428E48D9A007DB01B /* NETunnelProviderManager+Ext.swift in Sources */,
 				22C3EEAA28E4733C007DB01B /* NETunnelProviderProtocol+Extension.swift in Sources */,
