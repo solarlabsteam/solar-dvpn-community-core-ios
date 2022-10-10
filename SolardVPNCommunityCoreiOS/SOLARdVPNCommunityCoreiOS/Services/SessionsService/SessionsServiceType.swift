@@ -18,6 +18,6 @@ protocol SessionsServiceType {
         id: UInt64,
         accountAddress: String,
         signature: String,
-        completion: @escaping (Result<(Data, PrivateKey), SessionsServiceError>) -> Void
+        completion: @escaping (Result<(Data, PrivateKey), Error>) -> Void
     )
 }

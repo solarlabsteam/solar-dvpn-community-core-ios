@@ -10,14 +10,15 @@ import SOLARAPI
 import SentinelWallet
 
 typealias SingleInnerError = SOLARAPI.SingleInnerError
+typealias InnerError = SOLARAPI.InnerError
 
 enum ConnectionModelError: String, Error {
-    case signatureGenerationFailed
-    case nodeIsOffline
-    case balanceUpdateFailed
-    case noSubscription
-    case noQuotaLeft
-    case tunnelIsAlreadyActive
+    case signatureGenerationFailed = "signature_generation_failed"
+    case nodeIsOffline = "node_is_offline"
+    case balanceUpdateFailed = "balance_update_failed"
+    case noSubscription = "no_subscription"
+    case noQuotaLeft = "no_quota_left"
+    case tunnelIsAlreadyActive = "tunnel_is_already_active"
     
     var body: SingleInnerError {
         switch self {
@@ -33,25 +34,6 @@ enum ConnectionModelError: String, Error {
             return .init(code: 401, message: self.rawValue)
         case .tunnelIsAlreadyActive:
             return .init(code: 500, message: self.rawValue)
-        }
-    }
-}
-
-extension WalletServiceError {
-    var body: SingleInnerError {
-        switch self {
-        case .accountMatchesDestination:
-            return .init(code: 403, message: "accountMatchesDestination")
-        case .missingMnemonics:
-            return .init(code: 401, message: "missingMnemonics")
-        case .missingAuthorization:
-            return .init(code: 401, message: "missingAuthorization")
-        case .notEnoughTokens:
-            return .init(code: 402, message: "notEnoughTokens")
-        case .mnemonicsDoNotMatch:
-            return .init(code: 401, message: "mnemonicsDoNotMatch")
-        case .savingError:
-            return .init(code: 500, message: "savingError")
         }
     }
 }

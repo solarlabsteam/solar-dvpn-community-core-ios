@@ -9,11 +9,15 @@ import Foundation
 import Combine
 import SentinelWallet
 
-enum SubscriptionsServiceError: LocalizedError {
-    case missingMnemonic
-    case paymentFailed
-    case faliToCancelSubscription
-    case activeSession
+enum SubscriptionsServiceError: String, LocalizedError {
+    case missingMnemonic = "missing_mnemonic"
+    case paymentFailed = "payment_failed"
+    case faliToCancelSubscription = "fali_to_cancel_subscription"
+    case activeSession = "active_session"
+    
+    var errorDescription: String? {
+        self.rawValue
+    }
 }
 
 final class SubscriptionsService {

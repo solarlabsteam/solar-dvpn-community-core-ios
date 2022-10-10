@@ -57,7 +57,7 @@ extension SessionsService: SessionsServiceType {
         id: UInt64,
         accountAddress: String,
         signature: String,
-        completion: @escaping (Result<(Data, PrivateKey), SessionsServiceError>) -> Void
+        completion: @escaping (Result<(Data, PrivateKey), Error>) -> Void
     ) {
         guard var components = URLComponents(string: remoteURLString) else {
             completion(.failure(SessionsServiceError.invalidURL))
@@ -79,21 +79,17 @@ extension SessionsService: SessionsServiceType {
                 switch result {
                 case .success(let infoResult):
                     guard infoResult.success, let stringData = infoResult.result else {
-                        completion(.failure(.connectionParsingFailed))
+                        completion(.failure(SessionsServiceError.connectionParsingFailed))
                         return
                     }
                     guard let data = Data(base64Encoded: stringData), data.bytes.count == 58 else {
-                        completion(.failure(.connectionParsingFailed))
+                        completion(.failure(SessionsServiceError.connectionParsingFailed))
                         return
                     }
                     
                     completion(.success((data, wgKey)))
                 case .failure(let error):
-                    #warning("TODO: map error")
-//                    let mapper = Self.mapNetworkError(handleSpecificGenericErrors: { error -> SessionsServiceError? in
-//                        return SessionsServiceError.allCases.first(where: { $0.innerCodes.contains(error.code) })
-//                    })
-//                    completion(.failure(error))
+                    completion(.failure(error))
                 }
             }
     }

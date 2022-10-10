@@ -47,7 +47,7 @@ extension NodesRouteCollection {
                 case let .success(response):
                     Encoder.encode(model: response, continuation: continuation)
                 case let .failure(error):
-                    continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
+                    continuation.resume(throwing: error.encodedError())
                 }
             }
         })
@@ -66,7 +66,7 @@ extension NodesRouteCollection {
                 case let .success(response):
                     Encoder.encode(model: response, continuation: continuation)
                 case let .failure(error):
-                    continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
+                    continuation.resume(throwing: error.encodedError())
                 }
             }
         })
@@ -79,7 +79,7 @@ extension NodesRouteCollection {
                 case let .success(response):
                     Encoder.encode(model: response, continuation: continuation)
                 case let .failure(error):
-                    continuation.resume(throwing: Abort(.init(statusCode: error.code), reason: error.localizedDescription))
+                    continuation.resume(throwing: error.encodedError())
                 }
             }
         })

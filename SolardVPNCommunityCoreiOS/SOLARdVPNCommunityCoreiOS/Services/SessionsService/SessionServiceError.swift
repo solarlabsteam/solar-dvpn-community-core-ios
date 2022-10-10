@@ -7,15 +7,16 @@
 
 import Foundation
 
-enum SessionsServiceError: LocalizedError {
-    case invalidURL
+enum SessionsServiceError: String, LocalizedError {
+    case invalidURL = "invalid_url"
     
-    case connectionParsingFailed
-    case nodeMisconfigured
-    case noQuota
+    case connectionParsingFailed = "connection_parsing_failed"
+    case nodeMisconfigured = "node_misconfigured"
+    case noQuota = "no_quota"
     
-    case serverLocalized(String)
-    case other(Error)
+    var errorDescription: String? {
+        self.rawValue
+    }
 }
 
 extension SessionsServiceError {

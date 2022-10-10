@@ -7,14 +7,11 @@
 
 import Foundation
 
-enum EncoderError: LocalizedError {
-    case failToEncode
+enum EncoderError: String, LocalizedError {
+    case failToEncode = "fail_to_encode"
     
     var errorDescription: String? {
-        switch self {
-        case .failToEncode:
-            return "Fail to encode"
-        }
+        self.rawValue
     }
 }
 
@@ -28,7 +25,7 @@ enum Encoder {
             let string = String(decoding: result, as: UTF8.self)
             continuation.resume(returning: string)
         } catch {
-            continuation.resume(throwing: EncoderError.failToEncode)
+            continuation.resume(throwing: EncoderError.failToEncode.encodedError())
         }
     }
 }

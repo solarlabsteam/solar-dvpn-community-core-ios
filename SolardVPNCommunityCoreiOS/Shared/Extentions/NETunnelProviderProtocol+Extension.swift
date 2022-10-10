@@ -6,12 +6,16 @@
 import NetworkExtension
 import WireGuardKit
 
-enum PacketTunnelProviderError: String, Error {
+enum PacketTunnelProviderError: String, LocalizedError {
     case savedProtocolConfigurationIsInvalid
     case dnsResolutionFailure
     case couldNotStartBackend
     case couldNotDetermineFileDescriptor
     case couldNotSetNetworkSettings
+    
+    var errorDescription: String? {
+        self.rawValue
+    }
 }
 
 extension NETunnelProviderProtocol {

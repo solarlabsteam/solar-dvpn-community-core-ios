@@ -7,6 +7,10 @@
 
 import Foundation
 
-enum NodesServiceError: LocalizedError {
-    case failToLoadData
+enum NodesServiceError: String, LocalizedError {
+    case failToLoadData = "fail_to_load_data"
+    
+    var errorDescription: String? {
+        self.rawValue
+    }
 }

@@ -10,9 +10,13 @@ import SentinelWallet
 import HDWallet
 import SwiftKeychainWrapper
 
-enum SecurityServiceError: Error {
-    case emptyInput
-    case invalidInput
+enum SecurityServiceError: String, Error {
+    case emptyInput = "empty_input"
+    case invalidInput = "invalid_input"
+    
+    var errorDescription: String? {
+        self.rawValue
+    }
 }
 
 private struct Constants {

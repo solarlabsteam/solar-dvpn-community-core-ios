@@ -15,32 +15,47 @@ public enum TunnelsServiceError: LocalizedError {
     case addTunnelFailed(systemError: Error)
     
     case removeTunnelFailed(systemError: Error)
-}
-
-extension TunnelsServiceError {
+    
     public var errorDescription: String? {
         switch self {
         case .emptyName:
-            return "The name of the tunnel is empty"
+            return "empty_name"
         case .nameAlreadyExists:
-            return "The name of the tunnel already exist"
+            return "name_already_exists"
         case .loadTunnelsFailed:
-            return "Fail to load a tunnel"
+            return "load_tunnels_failed"
         case .addTunnelFailed:
-            return "Fail to add a tunnel"
+            return "add_tunnel_failed"
         case .removeTunnelFailed:
-            return "Fail to remove the tunnel"
+            return "remove_tunnel_failed"
         }
     }
 }
 
-enum TunnelActivationError: Error {
+enum TunnelActivationError: LocalizedError {
     case inactive
     case startingFailed(systemError: Error)
     case savingFailed(systemError: Error)
     case loadingFailed(systemError: Error)
     case retryLimitReached(lastSystemError: Error)
     case activationAttemptFailed(wasOnDemandEnabled: Bool)
+    
+    var errorDescription: String? {
+        switch self {
+        case .inactive:
+            return "inactive"
+        case .startingFailed(let systemError):
+            return "starting_failed: \(systemError.localizedDescription)"
+        case .savingFailed(let systemError):
+            return "saving_failed: \(systemError.localizedDescription)"
+        case .loadingFailed(let systemError):
+            return "loading_failed: \(systemError.localizedDescription)"
+        case .retryLimitReached(let lastSystemError):
+            return "retry_limit_reached: \(lastSystemError.localizedDescription)"
+        case .activationAttemptFailed:
+            return "activation_attempt_failed"
+        }
+    }
 }
 
 protocol TunnelsServiceStatusDelegate: AnyObject {

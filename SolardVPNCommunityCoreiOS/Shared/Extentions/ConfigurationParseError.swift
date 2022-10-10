@@ -11,7 +11,7 @@ enum ConfigurationParserState {
     case notInASection
 }
 
-enum ConfigurationParseError: Error {
+enum ConfigurationParseError: LocalizedError {
     case invalidLine(String.SubSequence)
     case noInterface
     case multipleInterfaces
@@ -33,4 +33,15 @@ enum ConfigurationParseError: Error {
     case peerHasUnrecognizedKey(String)
     case multiplePeersWithSamePublicKey
     case multipleEntriesForKey(String)
+    
+    var errorDescription: String? {
+        switch self {
+        case .invalidLine, .noInterface, .multipleInterfaces, .interfaceHasNoPrivateKey, .interfaceHasInvalidPrivateKey,
+                .interfaceHasInvalidListenPort, .interfaceHasInvalidAddress, .interfaceHasInvalidDNS,
+                .interfaceHasInvalidMTU, .interfaceHasUnrecognizedKey:
+            return "invalid_interface"
+        default:
+            return "invalid_peer"
+        }
+    }
 }

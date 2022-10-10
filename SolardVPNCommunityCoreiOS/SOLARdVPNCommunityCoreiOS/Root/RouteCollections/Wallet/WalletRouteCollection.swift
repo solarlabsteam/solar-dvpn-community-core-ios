@@ -7,6 +7,7 @@
 
 import Foundation
 import Vapor
+import SentinelWallet
 
 struct WalletRouteCollection: RouteCollection {
     let context: HasSecurityService & HasWalletStorage & HasWalletService
@@ -25,7 +26,7 @@ extension WalletRouteCollection {
             getWallet() { result in
                 switch result {
                 case let .failure(error):
-                    continuation.resume(throwing: Abort(.init(statusCode: 500), reason: error.localizedDescription))
+                    continuation.resume(throwing: error.encodedError())
                     
                 case let .success(wallet):
                     Encoder.encode(model: wallet, continuation: continuation)
@@ -42,11 +43,11 @@ extension WalletRouteCollection {
         return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
             switch context.securityService.restore(from: mnemonic) {
             case .failure(let error):
-                continuation.resume(throwing: Abort(.init(statusCode: 500), reason: error.localizedDescription))
+                continuation.resume(throwing: error.encodedError())
                 
             case .success(let result):
                 guard context.securityService.save(mnemonics: mnemonic, for: result) else {
-                    continuation.resume(throwing: Abort(.init(statusCode: 500), reason: "Creation failed"))
+                    continuation.resume(throwing: Abort(.init(statusCode: 500), reason: "creation_failed"))
                     return
                 }
                 context.walletStorage.set(wallet: result)
@@ -55,7 +56,7 @@ extension WalletRouteCollection {
                 getWallet() { result in
                     switch result {
                     case let .failure(error):
-                        continuation.resume(throwing: Abort(.init(statusCode: 500), reason: error.localizedDescription))
+                        continuation.resume(throwing: error.encodedError())
                         
                     case let .success(wallet):
                         Encoder.encode(model: wallet, continuation: continuation)
@@ -71,14 +72,14 @@ extension WalletRouteCollection {
         let address = context.walletStorage.walletAddress
         
         guard let mnemonic = context.securityService.loadMnemonics(for: address) else {
-            throw Abort(.init(statusCode: 500), reason: "Failed to liad mnemonic")
+            throw WalletServiceError.missingMnemonics.encodedError()
         }
         
         return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
             getWallet() { result in
                 switch result {
                 case let .failure(error):
-                    continuation.resume(throwing: Abort(.init(statusCode: 500), reason: error.localizedDescription))
+                    continuation.resume(throwing: error.encodedError())
                 case let .success(wallet):
                     let response = PostMnemonicResponse(wallet: wallet, mnemonic: mnemonic.joined(separator: " "))
                     Encoder.encode(model: response, continuation: continuation)
@@ -102,7 +103,7 @@ extension WalletRouteCollection {
         fetchBalance() { result in
             switch result {
             case let .failure(error):
-                completion(.failure(error))
+                completion(.failure(error.encodedError()))
                 
             case let .success(balance):
                 let address = context.walletStorage.walletAddress
@@ -119,7 +120,7 @@ extension WalletRouteCollection {
         context.walletService.fetchBalance { result in
             switch result {
             case let .failure(error):
-                completion(.failure(error))
+                completion(.failure(error.encodedError()))
                 
             case let .success(balances):
                 guard let balance = balances.first(where: { $0.denom == ClientConstants.denom }) else {
@@ -128,8 +129,7 @@ extension WalletRouteCollection {
                 }
                 
                 guard let amount = Int(balance.amount) else {
-                    // TODO: Call completion with error
-                    
+                    completion(.failure(EncoderError.failToEncode.encodedError()))
                     return
                 }
                 

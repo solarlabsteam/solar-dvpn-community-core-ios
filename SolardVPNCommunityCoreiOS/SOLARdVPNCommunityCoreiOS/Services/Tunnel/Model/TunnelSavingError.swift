@@ -7,20 +7,24 @@
 
 import Foundation
 
-enum TunnelSavingError: Error {
-    case nameRequired
-    case privateKeyRequired
-    case privateKeyInvalid
-    case addressInvalid
-    case listenPortInvalid
-    case MTUInvalid
+enum TunnelSavingError: String, LocalizedError {
+    case nameRequired = "name_equired"
+    case privateKeyRequired = "private_key_required"
+    case privateKeyInvalid = "private_key_invalid"
+    case addressInvalid = "address_invalid"
+    case listenPortInvalid = "listen_port_invalid"
+    case MTUInvalid = "mtu_invalid"
 
-    case publicKeyRequired
-    case publicKeyInvalid
-    case preSharedKeyInvalid
-    case allowedIPsInvalid
-    case endpointInvalid
-    case persistentKeepAliveInvalid
+    case publicKeyRequired = "public_key_required"
+    case publicKeyInvalid = "public_key_invalid"
+    case preSharedKeyInvalid = "pre_shared_key_invalid"
+    case allowedIPsInvalid = "allowed_ips_invalid"
+    case endpointInvalid = "endpoint_invalid"
+    case persistentKeepAliveInvalid = "persistent_keep_alive_invalid"
 
-    case publicKeyDuplicated
+    case publicKeyDuplicated = "public_key_duplicated"
+    
+    var errorDescription: String? {
+        self.rawValue
+    }
 }
