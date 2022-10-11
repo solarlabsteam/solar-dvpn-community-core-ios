@@ -8,7 +8,7 @@
 import Foundation
 
 enum TunnelSavingError: String, LocalizedError {
-    case nameRequired = "name_equired"
+    case nameRequired = "name_required"
     case privateKeyRequired = "private_key_required"
     case privateKeyInvalid = "private_key_invalid"
     case addressInvalid = "address_invalid"
