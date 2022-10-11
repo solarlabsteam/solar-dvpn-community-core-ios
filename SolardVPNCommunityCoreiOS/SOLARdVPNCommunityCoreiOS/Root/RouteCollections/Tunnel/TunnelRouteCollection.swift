@@ -33,12 +33,14 @@ private struct Constants {
 private let constants = Constants()
 
 class TunnelRouteCollection: RouteCollection {
+    private let context: HasTunnelManager
     private let model: ConnectionModel
     private var cancellables = Set<AnyCancellable>()
     
     private weak var delegate: WebSocketDelegate?
     
-    init(model: ConnectionModel, delegate: WebSocketDelegate?) {
+    init(context: HasTunnelManager, model: ConnectionModel, delegate: WebSocketDelegate?) {
+        self.context = context
         self.model = model
         self.delegate = delegate
         
@@ -48,6 +50,7 @@ class TunnelRouteCollection: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         routes.post(constants.path, use: createNewSession)
         routes.delete(constants.path, use: startDeactivationOfActiveTunnel)
+        routes.delete(constants.path, "configuration", use: resetVPNConfiguration)
     }
 }
 
@@ -68,6 +71,18 @@ extension TunnelRouteCollection {
         } catch {
             return Response(status: .badRequest)
         }
+    }
+    
+    func resetVPNConfiguration(_ req: Request) async throws -> Response {
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<Response, Error>) in
+            context.tunnelManager.resetVPNConfiguration { error in
+                if let error = error {
+                    continuation.resume(throwing: error.encodedError())
+                    return
+                }
+                continuation.resume(returning: Response(status: .ok))
+            }
+        })
     }
 }
 

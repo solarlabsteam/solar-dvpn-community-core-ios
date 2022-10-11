@@ -34,6 +34,7 @@ extension DVPNServer {
                 try api.register(
                     collection:
                         TunnelRouteCollection(
+                            context: context,
                             model: ConnectionModel(context: context),
                             delegate: self
                         )
