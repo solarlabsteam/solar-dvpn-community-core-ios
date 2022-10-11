@@ -33,13 +33,14 @@ private struct Constants {
 private let constants = Constants()
 
 class TunnelRouteCollection: RouteCollection {
-    private let context: HasTunnelManager
+    typealias Context = HasTunnelManager & HasSessionsService
+    private let context: Context
     private let model: ConnectionModel
     private var cancellables = Set<AnyCancellable>()
     
     private weak var delegate: WebSocketDelegate?
     
-    init(context: HasTunnelManager, model: ConnectionModel, delegate: WebSocketDelegate?) {
+    init(context: Context, model: ConnectionModel, delegate: WebSocketDelegate?) {
         self.context = context
         self.model = model
         self.delegate = delegate
@@ -51,6 +52,7 @@ class TunnelRouteCollection: RouteCollection {
         routes.post(constants.path, use: createNewSession)
         routes.delete(constants.path, use: startDeactivationOfActiveTunnel)
         routes.delete(constants.path, "configuration", use: resetVPNConfiguration)
+        routes.delete(constants.path, "sessions", use: stopActiveSessions)
     }
 }
 
@@ -81,6 +83,20 @@ extension TunnelRouteCollection {
                     return
                 }
                 continuation.resume(returning: Response(status: .ok))
+            }
+        })
+    }
+    
+    func stopActiveSessions(_ req: Request) async throws -> Response {
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<Response, Error>) in
+            context.sessionsService.stopActiveSessions { [weak self] result in
+                switch result {
+                case let .failure(error):
+                    continuation.resume(throwing: error.encodedError())
+                case .success:
+                    continuation.resume(returning: Response(status: .ok))
+                    self?.context.tunnelManager.startDeactivationOfActiveTunnel()
+                }
             }
         })
     }
