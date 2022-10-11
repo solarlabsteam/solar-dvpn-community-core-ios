@@ -140,11 +140,7 @@ extension ConnectionNodeModel {
     }
 
     private func startSession(on subscription: SentinelWallet.Subscription, nodeURL: String) {
-        guard let nodeAddress = context.connectionInfoStorage.lastSelectedNode() else {
-            return
-        }
-        
-        context.sessionsService.startSession(on: subscription.id, node: nodeAddress) { [weak self] result in
+        context.sessionsService.startSession(on: subscription.id, node: subscription.node) { [weak self] result in
             switch result {
             case .failure(let error):
                 self?.delegate?.show(error: .init(code: 500, message: error.localizedDescription))
