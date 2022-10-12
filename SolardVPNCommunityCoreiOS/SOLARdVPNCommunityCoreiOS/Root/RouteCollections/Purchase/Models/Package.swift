@@ -14,7 +14,6 @@ struct Package {
     let storeProduct: StoreProduct
     let offeringIdentifier: String
     let localizedPriceString: String
-    let localizedIntroductoryPriceString: String?
 }
 
 extension Package {
@@ -32,7 +31,6 @@ extension Package {
         self.storeProduct = StoreProduct.init(from: model.storeProduct)
         self.offeringIdentifier = model.offeringIdentifier
         self.localizedPriceString = model.localizedPriceString
-        self.localizedIntroductoryPriceString = model.localizedIntroductoryPriceString
     }
 }
 
