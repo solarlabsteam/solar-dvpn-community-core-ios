@@ -135,3 +135,5 @@ extension CommonContext: HasSafeStorage {}
 
 protocol HasCommonStorage { var commonStorage: SettingsStorageStrategyType { get } }
 extension CommonContext: HasCommonStorage {}
+
+extension CommonContext: NoContext {}
