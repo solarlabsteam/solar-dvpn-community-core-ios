@@ -53,7 +53,7 @@ extension PurchaseRouteCollection {
                         let package = offerings.flatMap { $0.availablePackages }.first(where: { $0.identifier == identifier })
 
                         guard let package = package else {
-                            continuation.resume(throwing: Abort(.init(statusCode: 500), reason: "Failed to find package"))
+                            continuation.resume(throwing: Abort(.badRequest))
 
                             return
                         }
