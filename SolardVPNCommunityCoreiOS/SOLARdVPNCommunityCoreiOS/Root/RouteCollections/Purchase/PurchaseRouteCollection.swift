@@ -19,7 +19,7 @@ struct PurchaseRouteCollection: RouteCollection {
     
     func boot(routes: RoutesBuilder) throws {
         routes.get("offerings", use: getOfferings)
-        routes.post("purchase", ":identifier", use: postPurchase)
+        routes.post("purchase", use: postPurchase)
     }
 }
 
@@ -39,35 +39,37 @@ extension PurchaseRouteCollection {
     
     func postPurchase(_ req: Request) async throws -> Response {
         try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<Response, Error>) in
-            guard let identifier = req.parameters.get("identifier") else {
-                continuation.resume(throwing: Abort(.badRequest))
-                return
-            }
-            
-            login()
+            do {
+                let body = try req.content.decode(PurchasePostBody.self)
+                let identifier = body.package_identifier
+                
+                login()
 
-            getOfferings() { result in
-                switch result {
-                case let .failure(error):
-                    continuation.resume(throwing: error.encodedError())
-                case let .success(offerings):
-                    let package = offerings.flatMap { $0.availablePackages }.first(where: { $0.identifier == identifier })
+                getOfferings() { result in
+                    switch result {
+                    case let .failure(error):
+                        continuation.resume(throwing: error.encodedError())
+                    case let .success(offerings):
+                        let package = offerings.flatMap { $0.availablePackages }.first(where: { $0.identifier == identifier })
 
-                    guard let package = package else {
-                        continuation.resume(throwing: Abort(.init(statusCode: 500), reason: "Failed to find package"))
+                        guard let package = package else {
+                            continuation.resume(throwing: Abort(.init(statusCode: 500), reason: "Failed to find package"))
 
-                        return
-                    }
+                            return
+                        }
 
-                    purchase(package: package) { result in
-                        switch result {
-                        case let .failure(error):
-                            continuation.resume(throwing: error.encodedError())
-                        case .success:
-                            continuation.resume(returning: .init(status: .ok))
+                        purchase(package: package) { result in
+                            switch result {
+                            case let .failure(error):
+                                continuation.resume(throwing: error.encodedError())
+                            case .success:
+                                continuation.resume(returning: .init(status: .ok))
+                            }
                         }
                     }
                 }
+            } catch {
+                continuation.resume(throwing: Abort(.badRequest))
             }
         })
     }
@@ -121,17 +123,6 @@ extension PurchaseRouteCollection {
                 log.error(error)
                 return
             }
-        }
-    }
-}
-
-enum PurchasesModelError: LocalizedError {
-    case purchaseCancelled
-    
-    var errorDescription: String? {
-        switch self {
-        case .purchaseCancelled:
-            return "Purchase was canceled."
         }
     }
 }

@@ -105,6 +105,8 @@
 		923C373E28EDB109003CFC03 /* PostMnemonicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C373D28EDB109003CFC03 /* PostMnemonicResponse.swift */; };
 		923C3B9628EEF06D003CFC03 /* SubscriptionsRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923C3B9528EEF06D003CFC03 /* SubscriptionsRouteCollection.swift */; };
 		923C3B9C28EEFDCF003CFC03 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 923C3B9B28EEFDCF003CFC03 /* RevenueCat */; };
+		924E61AC28F6EB4A004DC22C /* PurchasesModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924E61AB28F6EB4A004DC22C /* PurchasesModelError.swift */; };
+		924E61AE28F6EB88004DC22C /* PurchasePostBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924E61AD28F6EB88004DC22C /* PurchasePostBody.swift */; };
 		92C2DFB828F4338900ADD0A0 /* PurchaseRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2DFB728F4338900ADD0A0 /* PurchaseRouteCollection.swift */; };
 		92C2DFBD28F58A3B00ADD0A0 /* Offering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2DFBC28F58A3B00ADD0A0 /* Offering.swift */; };
 		92C2DFBF28F58BC500ADD0A0 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2DFBE28F58BC500ADD0A0 /* Package.swift */; };
@@ -279,6 +281,8 @@
 		923C373B28ED79A2003CFC03 /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
 		923C373D28EDB109003CFC03 /* PostMnemonicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMnemonicResponse.swift; sourceTree = "<group>"; };
 		923C3B9528EEF06D003CFC03 /* SubscriptionsRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsRouteCollection.swift; sourceTree = "<group>"; };
+		924E61AB28F6EB4A004DC22C /* PurchasesModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesModelError.swift; sourceTree = "<group>"; };
+		924E61AD28F6EB88004DC22C /* PurchasePostBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePostBody.swift; sourceTree = "<group>"; };
 		92C2DFB728F4338900ADD0A0 /* PurchaseRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRouteCollection.swift; sourceTree = "<group>"; };
 		92C2DFBC28F58A3B00ADD0A0 /* Offering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offering.swift; sourceTree = "<group>"; };
 		92C2DFBE28F58BC500ADD0A0 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -746,6 +750,8 @@
 				92C2DFBE28F58BC500ADD0A0 /* Package.swift */,
 				92C2DFC028F594D200ADD0A0 /* PackageType.swift */,
 				92C2DFC228F5964400ADD0A0 /* StoreProduct.swift */,
+				924E61AB28F6EB4A004DC22C /* PurchasesModelError.swift */,
+				924E61AD28F6EB88004DC22C /* PurchasePostBody.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1127,6 +1133,7 @@
 				92D6B40128E19E20004CF9DF /* ViewController.swift in Sources */,
 				22C3EEED28E48D9A007DB01B /* SentinelNode+Ext.swift in Sources */,
 				923C372628EAE93E003CFC03 /* Encoder.swift in Sources */,
+				924E61AE28F6EB88004DC22C /* PurchasePostBody.swift in Sources */,
 				225A838028EACFD900F66619 /* Node.swift in Sources */,
 				92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */,
 				923C371428E5B898003CFC03 /* CommonContext.swift in Sources */,
@@ -1155,6 +1162,7 @@
 				22488A9328E726AA00FE29C3 /* TunnelRouteCollection.swift in Sources */,
 				92C2DFC128F594D200ADD0A0 /* PackageType.swift in Sources */,
 				22488A9128E7043200FE29C3 /* String+ArrayConversion.swift in Sources */,
+				924E61AC28F6EB4A004DC22C /* PurchasesModelError.swift in Sources */,
 				22488AA128E72C4E00FE29C3 /* SettingsStorageStrategyType.swift in Sources */,
 				225A838928EAE01400F66619 /* SessionServiceError.swift in Sources */,
 				22C3EEF928E48F0B007DB01B /* DNSServerType.swift in Sources */,
