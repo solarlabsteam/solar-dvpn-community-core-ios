@@ -9,10 +9,6 @@ import Foundation
 
 struct PostConnectionRequest: Codable {
     let nodeAddress: String
-
-    init(nodeAddress: String) {
-        self.nodeAddress = nodeAddress
-    }
 }
 
 // MARK: - Codable implementation
