@@ -54,20 +54,23 @@ extension NodesRouteCollection {
     }
     
     func postNodesByAddress(_ req: Request) async throws -> String {
-        let body = try req.content.decode(NodesByAddressPostBody.self)
-        
-        let addresses = Array(Set(body.blockchain_addresses))
-        
-        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
-            context.nodesProvider.postNodesByAddress(
-                .init(addresses: addresses, page: body.page)
-            ) { result in
-                switch result {
-                case let .success(response):
-                    Encoder.encode(model: response, continuation: continuation)
-                case let .failure(error):
-                    continuation.resume(throwing: error.encodedError())
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            do {
+                let body = try req.content.decode(NodesByAddressPostBody.self)
+                let addresses = Array(Set(body.blockchain_addresses))
+                
+                context.nodesProvider.postNodesByAddress(
+                    .init(addresses: addresses, page: body.page)
+                ) { result in
+                    switch result {
+                    case let .success(response):
+                        Encoder.encode(model: response, continuation: continuation)
+                    case let .failure(error):
+                        continuation.resume(throwing: error.encodedError())
+                    }
                 }
+            } catch {
+                continuation.resume(throwing: Abort(.badRequest))
             }
         })
     }
