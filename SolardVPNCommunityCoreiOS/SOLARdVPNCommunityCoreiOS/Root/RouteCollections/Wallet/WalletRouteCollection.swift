@@ -10,7 +10,7 @@ import Vapor
 import SentinelWallet
 
 struct WalletRouteCollection: RouteCollection {
-    let context: HasSecurityService & HasWalletStorage & HasWalletService
+    let context: HasSecurityService & HasWalletStorage & HasWalletService & HasDNSServersStorage
     
     func boot(routes: RoutesBuilder) throws {
         routes.get("wallet", use: getWallet)
@@ -94,6 +94,9 @@ extension WalletRouteCollection {
 
     func deleteWallet(_ req: Request) -> Response {
         context.resetWalletContext()
+        
+        context.dnsServersStorage.set(dns: .default)
+        
         return Response()
     }
 }
