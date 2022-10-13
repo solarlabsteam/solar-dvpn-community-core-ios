@@ -36,34 +36,37 @@ extension WalletRouteCollection {
     }
     
     func putWallet(_ req: Request) async throws -> String {
-        let body = try req.content.decode(Mnemonic.self)
-        
-        let mnemonic = body.mnemonic.components(separatedBy: .whitespaces)
-        
-        return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
-            switch context.securityService.restore(from: mnemonic) {
-            case .failure(let error):
-                continuation.resume(throwing: error.encodedError())
-                
-            case .success(let result):
-                guard context.securityService.save(mnemonics: mnemonic, for: result) else {
-                    continuation.resume(throwing: Abort(.init(statusCode: 500), reason: "creation_failed"))
-                    return
-                }
-                context.walletStorage.set(wallet: result)
-                context.updateWalletContext()
-                
-                getWallet() { result in
-                    switch result {
-                    case let .failure(error):
-                        continuation.resume(throwing: error.encodedError())
-                        
-                    case let .success(wallet):
-                        Encoder.encode(model: wallet, continuation: continuation)
-                    }
-                }
-            }
-        })
+         try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+             do {
+                 let body = try req.content.decode(Mnemonic.self)
+                 let mnemonic = body.mnemonic.components(separatedBy: .whitespaces)
+                 
+                 switch context.securityService.restore(from: mnemonic) {
+                 case .failure(let error):
+                     continuation.resume(throwing: error.encodedError())
+                     
+                 case .success(let result):
+                     guard context.securityService.save(mnemonics: mnemonic, for: result) else {
+                         continuation.resume(throwing: WalletServiceError.savingError.encodedError())
+                         return
+                     }
+                     context.walletStorage.set(wallet: result)
+                     context.updateWalletContext()
+                     
+                     getWallet() { result in
+                         switch result {
+                         case let .failure(error):
+                             continuation.resume(throwing: error.encodedError())
+                             
+                         case let .success(wallet):
+                             Encoder.encode(model: wallet, continuation: continuation)
+                         }
+                     }
+                 }
+             } catch {
+                 continuation.resume(throwing: Abort(.badRequest))
+             }
+         })
     }
     
     func postWallet(_ req: Request) async throws -> String {
@@ -71,11 +74,12 @@ extension WalletRouteCollection {
         
         let address = context.walletStorage.walletAddress
         
-        guard let mnemonic = context.securityService.loadMnemonics(for: address) else {
-            throw WalletServiceError.missingMnemonics.encodedError()
-        }
-        
         return try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            guard let mnemonic = context.securityService.loadMnemonics(for: address) else {
+                continuation.resume(throwing: WalletServiceError.missingMnemonics.encodedError())
+                return
+            }
+            
             getWallet() { result in
                 switch result {
                 case let .failure(error):
@@ -129,7 +133,7 @@ extension WalletRouteCollection {
                 }
                 
                 guard let amount = Int(balance.amount) else {
-                    completion(.failure(EncoderError.failToEncode.encodedError()))
+                    completion(.failure(Abort(.internalServerError)))
                     return
                 }
                 
