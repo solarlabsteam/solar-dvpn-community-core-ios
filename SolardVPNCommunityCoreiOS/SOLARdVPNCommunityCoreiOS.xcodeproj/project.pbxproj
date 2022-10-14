@@ -107,6 +107,8 @@
 		923C3B9C28EEFDCF003CFC03 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 923C3B9B28EEFDCF003CFC03 /* RevenueCat */; };
 		924E61AC28F6EB4A004DC22C /* PurchasesModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924E61AB28F6EB4A004DC22C /* PurchasesModelError.swift */; };
 		924E61AE28F6EB88004DC22C /* PurchasePostBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924E61AD28F6EB88004DC22C /* PurchasePostBody.swift */; };
+		924F2B7728F98E6600FBCD48 /* ConnectionStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F2B7628F98E6600FBCD48 /* ConnectionStatusResponse.swift */; };
+		924F2B7928F9904E00FBCD48 /* ConnectionStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F2B7828F9904E00FBCD48 /* ConnectionStatusType.swift */; };
 		92C2DFB828F4338900ADD0A0 /* PurchaseRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2DFB728F4338900ADD0A0 /* PurchaseRouteCollection.swift */; };
 		92C2DFBD28F58A3B00ADD0A0 /* Offering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2DFBC28F58A3B00ADD0A0 /* Offering.swift */; };
 		92C2DFBF28F58BC500ADD0A0 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2DFBE28F58BC500ADD0A0 /* Package.swift */; };
@@ -283,6 +285,8 @@
 		923C3B9528EEF06D003CFC03 /* SubscriptionsRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsRouteCollection.swift; sourceTree = "<group>"; };
 		924E61AB28F6EB4A004DC22C /* PurchasesModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesModelError.swift; sourceTree = "<group>"; };
 		924E61AD28F6EB88004DC22C /* PurchasePostBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePostBody.swift; sourceTree = "<group>"; };
+		924F2B7628F98E6600FBCD48 /* ConnectionStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusResponse.swift; sourceTree = "<group>"; };
+		924F2B7828F9904E00FBCD48 /* ConnectionStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusType.swift; sourceTree = "<group>"; };
 		92C2DFB728F4338900ADD0A0 /* PurchaseRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRouteCollection.swift; sourceTree = "<group>"; };
 		92C2DFBC28F58A3B00ADD0A0 /* Offering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offering.swift; sourceTree = "<group>"; };
 		92C2DFBE28F58BC500ADD0A0 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 				225A834928EACE6C00F66619 /* Models */,
 				225A834F28EACE6C00F66619 /* ConnectionNodeModel.swift */,
 				225A836628EACE6C00F66619 /* ConnectionModel.swift */,
+				924F2B7628F98E6600FBCD48 /* ConnectionStatusResponse.swift */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 				225A834628EACE6C00F66619 /* Connection */,
 				225A83BF28EF139A00F66619 /* PostConnectionRequest.swift */,
 				22488A9228E726A900FE29C3 /* TunnelRouteCollection.swift */,
+				924F2B7828F9904E00FBCD48 /* ConnectionStatusType.swift */,
 			);
 			path = Tunnel;
 			sourceTree = "<group>";
@@ -1147,6 +1153,8 @@
 				92D6B46F28E47E2E004CF9DF /* NodesService.swift in Sources */,
 				22C3EEA728E4733C007DB01B /* Config.swift in Sources */,
 				22C3EEE528E48D9A007DB01B /* NEVPNManager+Ext.swift in Sources */,
+				924F2B7728F98E6600FBCD48 /* ConnectionStatusResponse.swift in Sources */,
+				924F2B7928F9904E00FBCD48 /* ConnectionStatusType.swift in Sources */,
 				923C373C28ED79A2003CFC03 /* Mnemonic.swift in Sources */,
 				22488AA028E72C4E00FE29C3 /* UserDefaultsStorageStrategy.swift in Sources */,
 				22C3EECA28E48B52007DB01B /* TunnelManager.swift in Sources */,

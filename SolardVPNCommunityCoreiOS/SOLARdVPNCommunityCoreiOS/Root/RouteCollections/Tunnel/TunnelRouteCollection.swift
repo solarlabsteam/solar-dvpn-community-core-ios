@@ -34,7 +34,7 @@ private struct Constants {
 private let constants = Constants()
 
 class TunnelRouteCollection: RouteCollection {
-    typealias Context = HasTunnelManager & HasSessionsService
+    typealias Context = HasTunnelManager & HasSessionsService & HasConnectionInfoStorage
     private let context: Context
     private let model: ConnectionModel
     private var cancellables = Set<AnyCancellable>()
@@ -52,6 +52,7 @@ class TunnelRouteCollection: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         routes.post(constants.path, use: createNewSession)
         routes.delete(constants.path, use: startDeactivationOfActiveTunnel)
+        routes.get(constants.path, use: getConnectionStatus)
         routes.delete(constants.path, "configuration", use: resetVPNConfiguration)
         routes.delete(constants.path, "sessions", use: stopActiveSessions)
     }
@@ -74,6 +75,20 @@ extension TunnelRouteCollection {
         } catch {
             return Response(status: .badRequest)
         }
+    }
+    
+    func getConnectionStatus(_ req: Request) async throws -> String {
+        try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<String, Error>) in
+            let isConnected = context.tunnelManager.isTunnelActive
+            let nodeAddress = context.connectionInfoStorage.lastSelectedNode() ?? ""
+            
+            let response = ConnectionStatusResponse(
+                tunnelStatus: isConnected ? ConnectionStatusType.connected.rawValue : ConnectionStatusType.disconnected.rawValue,
+                nodeAddress: nodeAddress
+            )
+            
+            return Encoder.encode(model: response, continuation: continuation)
+        })
     }
     
     func resetVPNConfiguration(_ req: Request) async throws -> Response {
@@ -138,7 +153,10 @@ extension TunnelRouteCollection {
     }
     
     private func updateConnection(isConnected: Bool) {
-        send(key: constants.connectionType, value: isConnected ? "connected" : "disconnected")
+        send(
+            key: constants.connectionType,
+            value: isConnected ? ConnectionStatusType.connected.rawValue : ConnectionStatusType.disconnected.rawValue
+        )
     }
     
     private func send(key: String, value: String) {
