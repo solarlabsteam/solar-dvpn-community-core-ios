@@ -29,6 +29,7 @@ enum TunnelRouteEvent: String {
 private struct Constants {
     let path: PathComponent = "connection"
     let connectionType = "tunnelStatus"
+    let error = "error"
 }
 private let constants = Constants()
 
@@ -127,19 +128,23 @@ extension TunnelRouteCollection {
     
 extension TunnelRouteCollection {
     private func send(error: SingleInnerError) {
-        let data = error.toData()?.string ?? error.error.message
-        delegate?.send(event: data)
+        let message = error.error.toData()?.string ?? error.error.message
+        send(key: constants.error, value: message)
     }
     
     private func send(warning: SingleInnerError) {
-        let data = warning.toData()?.string ?? warning.error.message
-        delegate?.send(event: data)
+        let message = warning.error.toData()?.string ?? warning.error.message
+        send(key: constants.error, value: message)
     }
     
     private func updateConnection(isConnected: Bool) {
+        send(key: constants.connectionType, value: isConnected ? "connected" : "disconnected")
+    }
+    
+    private func send(key: String, value: String) {
         let event = InfoEvent(
-            type: constants.connectionType,
-            value: isConnected ? "connected" : "disconnected"
+            type: key,
+            value: value
         )
         if let dataString = event.toData()?.string {
             delegate?.send(event: dataString)
