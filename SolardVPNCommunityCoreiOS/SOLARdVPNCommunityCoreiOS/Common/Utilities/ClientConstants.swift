@@ -15,7 +15,9 @@ enum ClientConstants {
     static let defaultLCDHostString = "lcd-sentinel.dvpn.solar"
     static let defaultLCDPort = 993
     
-    static let backendURL = URL(string: "https://BACKEND")!
+    // Set backend URL
+    static let backendURL = URL(string: "https://")!
+    // Set purchases API key URL, if you wish to use In-App Purchase
     static let purchasesAPIKey = ""
     
     static let apiPath = "api"
