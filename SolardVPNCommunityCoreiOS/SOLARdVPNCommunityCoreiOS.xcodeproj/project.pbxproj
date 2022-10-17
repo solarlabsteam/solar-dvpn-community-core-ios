@@ -109,6 +109,7 @@
 		924E61AE28F6EB88004DC22C /* PurchasePostBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924E61AD28F6EB88004DC22C /* PurchasePostBody.swift */; };
 		924F2B7728F98E6600FBCD48 /* ConnectionStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F2B7628F98E6600FBCD48 /* ConnectionStatusResponse.swift */; };
 		924F2B7928F9904E00FBCD48 /* ConnectionStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F2B7828F9904E00FBCD48 /* ConnectionStatusType.swift */; };
+		924F2B8128FD88BB00FBCD48 /* SubscriptionsProviderError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F2B8028FD88BB00FBCD48 /* SubscriptionsProviderError+Ext.swift */; };
 		92C2DFB828F4338900ADD0A0 /* PurchaseRouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2DFB728F4338900ADD0A0 /* PurchaseRouteCollection.swift */; };
 		92C2DFBD28F58A3B00ADD0A0 /* Offering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2DFBC28F58A3B00ADD0A0 /* Offering.swift */; };
 		92C2DFBF28F58BC500ADD0A0 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2DFBE28F58BC500ADD0A0 /* Package.swift */; };
@@ -287,6 +288,7 @@
 		924E61AD28F6EB88004DC22C /* PurchasePostBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePostBody.swift; sourceTree = "<group>"; };
 		924F2B7628F98E6600FBCD48 /* ConnectionStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusResponse.swift; sourceTree = "<group>"; };
 		924F2B7828F9904E00FBCD48 /* ConnectionStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusType.swift; sourceTree = "<group>"; };
+		924F2B8028FD88BB00FBCD48 /* SubscriptionsProviderError+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubscriptionsProviderError+Ext.swift"; sourceTree = "<group>"; };
 		92C2DFB728F4338900ADD0A0 /* PurchaseRouteCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRouteCollection.swift; sourceTree = "<group>"; };
 		92C2DFBC28F58A3B00ADD0A0 /* Offering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offering.swift; sourceTree = "<group>"; };
 		92C2DFBE28F58BC500ADD0A0 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -605,6 +607,7 @@
 			isa = PBXGroup;
 			children = (
 				22C3EEE228E48D9A007DB01B /* SentinelNode+Ext.swift */,
+				924F2B8028FD88BB00FBCD48 /* SubscriptionsProviderError+Ext.swift */,
 				2233714128F44645009D37D9 /* WalletServiceError+Ext.swift */,
 			);
 			path = Wallet;
@@ -1142,6 +1145,7 @@
 				924E61AE28F6EB88004DC22C /* PurchasePostBody.swift in Sources */,
 				225A838028EACFD900F66619 /* Node.swift in Sources */,
 				92D6B41828E2DC85004CF9DF /* NodesRouteCollection.swift in Sources */,
+				924F2B8128FD88BB00FBCD48 /* SubscriptionsProviderError+Ext.swift in Sources */,
 				923C371428E5B898003CFC03 /* CommonContext.swift in Sources */,
 				923C372C28EB08BB003CFC03 /* ContinentDecoder.swift in Sources */,
 				923C373128EB0CB2003CFC03 /* CountryExtra.swift in Sources */,
