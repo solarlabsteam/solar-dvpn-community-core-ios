@@ -7,11 +7,11 @@ import NetworkExtension
 import WireGuardKit
 
 enum PacketTunnelProviderError: String, LocalizedError {
-    case savedProtocolConfigurationIsInvalid
-    case dnsResolutionFailure
-    case couldNotStartBackend
-    case couldNotDetermineFileDescriptor
-    case couldNotSetNetworkSettings
+    case savedProtocolConfigurationIsInvalid = "saved_protocol_configuration_is_invalid"
+    case dnsResolutionFailure = "dns_resolution_failure"
+    case couldNotStartBackend = "could_not_start_backend"
+    case couldNotDetermineFileDescriptor = "could_not_determine_file_descriptor"
+    case couldNotSetNetworkSettings = "could_not_set_network_settings"
     
     var errorDescription: String? {
         self.rawValue
