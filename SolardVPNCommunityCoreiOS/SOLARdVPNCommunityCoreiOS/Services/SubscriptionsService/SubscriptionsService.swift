@@ -12,7 +12,7 @@ import SentinelWallet
 enum SubscriptionsServiceError: String, LocalizedError {
     case missingMnemonic = "missing_mnemonic"
     case paymentFailed = "payment_failed"
-    case faliToCancelSubscription = "fali_to_cancel_subscription"
+    case failToCancelSubscription = "fail_to_cancel_subscription"
     case activeSession = "active_session"
     
     var errorDescription: String? {
@@ -95,7 +95,7 @@ extension SubscriptionsService: SubscriptionsServiceType {
                         completion(.failure(SubscriptionsServiceError.activeSession))
                         return
                     }
-                    completion(.failure(SubscriptionsServiceError.faliToCancelSubscription))
+                    completion(.failure(SubscriptionsServiceError.failToCancelSubscription))
                 }
             }
         }
